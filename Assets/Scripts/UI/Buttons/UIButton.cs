@@ -10,6 +10,11 @@ public class UIButton : MonoBehaviour
 
     public virtual void Start()
     {
+        Initialize();
+    }
+
+    public virtual void Initialize()
+    {
         PersistentSceneManager = PersistentSceneManager.instance;
         button = GetComponent<Button>();
         Canvas = GetComponentInParent<Canvas>();
