@@ -5,5 +5,4 @@ using UnityEngine.UI;
 
 public class UIMainTopic : UIController
 {
-    public Image HoverImage;
 }
