@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PersistentSceneManager : MonoBehaviour
 {
     public static PersistentSceneManager instance;
+    public bool LoadStartScene;
+    public string StartScene;
 
     private string currentMainScene;
     private string sceneToLoad;
@@ -18,6 +20,15 @@ public class PersistentSceneManager : MonoBehaviour
         instance = this;
         currentMainScene = null;
     }
+
+    private void Start()
+    {
+        if (LoadStartScene == true)
+        {
+            LoadActiveAdditive(StartScene);
+        }
+    }
+
     public AsyncOperation LoadActiveAdditive(string sceneName)
     {
         loadOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);

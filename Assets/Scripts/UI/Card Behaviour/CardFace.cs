@@ -9,6 +9,5 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         CardBackFace.SetActive(!CardBackFace.activeSelf);
-        Debug.Log("click");
     }
 }

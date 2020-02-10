@@ -247,3 +247,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cfc72c38272f1649945a0d4835582b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadStartScene: 1
+  StartScene: Topic UI
