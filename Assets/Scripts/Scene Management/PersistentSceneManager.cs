@@ -44,7 +44,15 @@ public class PersistentSceneManager : MonoBehaviour
 
     public AsyncOperation UnloadScene(string sceneName)
     {
-        return SceneManager.UnloadSceneAsync(sceneName);
+        if (SceneManager.GetSceneByName(sceneName).isLoaded)
+        {
+            Debug.Assert(SceneManager.GetSceneByName(sceneName).isLoaded, "Scene Not Loaded");
+            return SceneManager.UnloadSceneAsync(sceneName);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public void ReplaceActiveScene(string sceneToLoad)

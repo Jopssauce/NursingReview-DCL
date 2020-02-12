@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
     public Canvas Canvas;
     public Vector2 ReferenceResolution = new Vector2(1920, 1080);
 
-    PersistentSceneManager PersistentSceneManager;
+    protected PersistentSceneManager PersistentSceneManager;
 
     private void Awake()
     {

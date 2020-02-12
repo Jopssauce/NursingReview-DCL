@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 84217276}
   - component: {fileID: 84217278}
   - component: {fileID: 84217277}
+  - component: {fileID: 84217279}
   m_Layer: 5
   m_Name: Video Panel
   m_TagString: Untagged
@@ -301,6 +302,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84217275}
   m_CullTransparentMesh: 0
+--- !u!114 &84217279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84217275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56a10a3df89b7cf419de3ae97b02d74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VideoUI: Video Player UI
 --- !u!1 &98369072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,7 +2600,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1089}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2654,6 +2668,7 @@ MonoBehaviour:
   ReferenceResolution: {x: 1920, y: 1080}
   SelectedTopicText: {fileID: 1064961396}
   CardFacePanel: {fileID: 1209424922}
+  VideoUI: Video Player UI
 --- !u!1 &600005312
 GameObject:
   m_ObjectHideFlags: 0

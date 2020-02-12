@@ -9,9 +9,17 @@ public class UIMainTopic : UIController
     public TextMeshProUGUI SelectedTopicText;
     public GameObject CardFacePanel;
 
+    public string VideoUI;
+
+    bool isVideoPlaying;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == true)
+        {
+            UnLoadVideoPlayer();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == false)
         {
             CardFacePanel.SetActive(false);
         }
@@ -20,5 +28,17 @@ public class UIMainTopic : UIController
     public void SetSelectedTopicText(string text)
     {
         SelectedTopicText.text = text;
+    }
+
+    public void LoadVideoPlayer()
+    {
+        isVideoPlaying = true;
+        PersistentSceneManager.LoadActiveAdditive(VideoUI);
+    }
+
+    public void UnLoadVideoPlayer()
+    {
+        isVideoPlaying = false;
+        PersistentSceneManager.UnloadScene(VideoUI);
     }
 }
