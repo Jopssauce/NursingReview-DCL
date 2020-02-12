@@ -10,6 +10,8 @@ public class UIMainTopic : UIController
     public GameObject CardFacePanel;
 
     public string VideoUI;
+    [SerializeField]
+    private RenderTexture VideoTexture;
 
     bool isVideoPlaying;
 
@@ -32,6 +34,7 @@ public class UIMainTopic : UIController
 
     public void LoadVideoPlayer()
     {
+        VideoTexture.Release();
         isVideoPlaying = true;
         PersistentSceneManager.LoadActiveAdditive(VideoUI);
     }
