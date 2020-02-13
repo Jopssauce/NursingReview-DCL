@@ -62,7 +62,6 @@ public class UIMainTopic : UIController
             Destroy(Cards[i]);
         }
         Cards.Clear();
-        Debug.Log(Cards.Count);
     }
 
     public void LoadVideoPlayer()
