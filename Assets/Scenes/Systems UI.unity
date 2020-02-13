@@ -2455,6 +2455,7 @@ MonoBehaviour:
   CardFacePanel: {fileID: 1209424922}
   VideoUI: Video Player UI
   VideoTexture: {fileID: 8400000, guid: a11199d4e174f9b46b5567b9d87189fc, type: 2}
+  DefaultTopic: {fileID: 11400000, guid: 17547aae88ffa7f4a9fe49c8c31f4d9a, type: 2}
 --- !u!1 &600005312
 GameObject:
   m_ObjectHideFlags: 0
