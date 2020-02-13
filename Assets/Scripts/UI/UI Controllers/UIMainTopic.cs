@@ -11,7 +11,7 @@ public class UIMainTopic : UIController
 
     public string VideoUI;
     [SerializeField]
-    private RenderTexture VideoTexture;
+    private RenderTexture VideoTexture = null;
     [SerializeField]
     private DataTopic DefaultTopic = null;
 
