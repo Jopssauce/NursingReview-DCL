@@ -6,5 +6,5 @@ using UnityEngine;
 public class DataTopic : ScriptableObject
 {
     public string TopicName;
-    public List<Card> Cards;
+    public List<GameObject> Cards;
 }
