@@ -10,16 +10,21 @@ public class UIMainTopic : UIController
     public GameObject CardFacePanel;
 
     public string VideoUI;
+
     [SerializeField]
     private RenderTexture VideoTexture = null;
     [SerializeField]
     private DataTopic DefaultTopic = null;
+    [SerializeField]
+    private GameObject CardContent = null;
 
+    private List<GameObject> Cards = new List<GameObject>();
     bool isVideoPlaying;
 
     private void Awake()
     {
         SelectedTopicText.text = DefaultTopic.TopicName;
+        InstaniateCards(DefaultTopic);
     }
 
     void Update()
@@ -37,6 +42,27 @@ public class UIMainTopic : UIController
     public void SetSelectedTopicText(DataTopic topicData)
     {
         SelectedTopicText.text = topicData.TopicName;
+        InstaniateCards(topicData);
+    }
+
+    private void InstaniateCards(DataTopic topicData)
+    {
+        ClearCards();
+        for (int i = 0; i < topicData.Cards.Count; i++)
+        {
+            GameObject instance = Instantiate(topicData.Cards[i], CardContent.transform);
+            Cards.Add(instance);
+        }
+    }
+
+    private void ClearCards()
+    {
+        for (int i = 0; i < Cards.Count; i++)
+        {
+            Destroy(Cards[i]);
+        }
+        Cards.Clear();
+        Debug.Log(Cards.Count);
     }
 
     public void LoadVideoPlayer()
