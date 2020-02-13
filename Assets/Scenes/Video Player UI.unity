@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3768fe280903842fdaa2a016022624f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  youtubeUrl: https://www.youtube.com/watch?v=1PuGuqpHQGo
+  youtubeUrl: https://www.youtube.com/watch?v=YWc5KTP8SHw
 --- !u!4 &327301294
 Transform:
   m_ObjectHideFlags: 0
