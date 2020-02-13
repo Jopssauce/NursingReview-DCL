@@ -27,7 +27,7 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
 
     void OnClick()
     {
-        uiMainTopic.SetSelectedTopicText(TopicData.TopicName);
+        uiMainTopic.SetSelectedTopicText(TopicData);
     }
 
     public void ReplaceActiveScene(string scene)

@@ -12,8 +12,15 @@ public class UIMainTopic : UIController
     public string VideoUI;
     [SerializeField]
     private RenderTexture VideoTexture;
+    [SerializeField]
+    private DataTopic DefaultTopic = null;
 
     bool isVideoPlaying;
+
+    private void Awake()
+    {
+        SelectedTopicText.text = DefaultTopic.TopicName;
+    }
 
     void Update()
     {
@@ -27,9 +34,9 @@ public class UIMainTopic : UIController
         }
     }
 
-    public void SetSelectedTopicText(string text)
+    public void SetSelectedTopicText(DataTopic topicData)
     {
-        SelectedTopicText.text = text;
+        SelectedTopicText.text = topicData.TopicName;
     }
 
     public void LoadVideoPlayer()
