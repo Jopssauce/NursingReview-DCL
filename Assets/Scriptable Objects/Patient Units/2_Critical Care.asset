@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: 2_Critical Care
   m_EditorClassIdentifier: 
   TopicName: Critical Care
-  Cards: []
+  Cards:
+  - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
+  - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
+  - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
+  - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
+  - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
+  - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
