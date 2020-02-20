@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
-[RequireComponent(typeof(VideoPlayer))]
 public class VideoControls : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
+    public Sprite Pause;
+    public Sprite Play;
+
+    Image button;
 
     private void Awake()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
+        button = GetComponent<Image>();
     }
 
     private void Update()
@@ -21,15 +25,17 @@ public class VideoControls : MonoBehaviour
         }
     }
 
-    void PlayPause()
+    public void PlayPause()
     {
         if (videoPlayer.isPlaying)
         {
             videoPlayer.Pause();
+            button.sprite = Play;
         }
         else
         {
             videoPlayer.Play();
+            button.sprite = Pause;
         }
     }
 }
