@@ -12,6 +12,8 @@ public class UIMainTopic : UIController
     public string VideoUI;
 
     [SerializeField]
+    VideoPanel VideoPanel = null;
+    [SerializeField]
     private RenderTexture VideoTexture = null;
     [SerializeField]
     private DataTopic DefaultTopic = null;
@@ -32,6 +34,7 @@ public class UIMainTopic : UIController
         if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == true)
         {
             UnLoadVideoPlayer();
+            VideoPanel.UnZoom();
         }
         if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == false)
         {

@@ -65,7 +65,11 @@ namespace YoutubePlayer
                 var streamInfo = streamInfoSet.WithHighestVideoQualitySupported();
                 if (streamInfo == null)
                     throw new NotSupportedException($"No supported streams in youtube video '{videoId}'");
-
+                if (videoPlayer == null)
+                {
+                    Debug.Log("Player Null");
+                    return;
+                }
                 videoPlayer.source = VideoSource.Url;
 
                 //Resetting the same url restarts the video...
