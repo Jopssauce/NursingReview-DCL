@@ -9,12 +9,16 @@ public class UIMainTopic : UIController
     public TextMeshProUGUI SelectedTopicText;
     public GameObject CardFacePanel;
 
+    [Header("Video")]
     public string VideoUI;
-
     [SerializeField]
     VideoPanel VideoPanel = null;
     [SerializeField]
     private RenderTexture VideoTexture = null;
+
+    [Header("UI Elements")]
+    [SerializeField]
+    Image Background = null;
     [SerializeField]
     private DataTopic DefaultTopic = null;
     [SerializeField]
@@ -45,6 +49,7 @@ public class UIMainTopic : UIController
     public void SetSelectedTopicText(DataTopic topicData)
     {
         SelectedTopicText.text = topicData.TopicName;
+        Background.sprite = topicData.Background;
         InstaniateCards(topicData);
     }
 
