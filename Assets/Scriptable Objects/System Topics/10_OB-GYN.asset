@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 10_OB-GYN
   m_EditorClassIdentifier: 
   TopicName: OB-GYN
+  Background: {fileID: 21300000, guid: 2610557fa95d3f34aa69582cdbdf12dd, type: 3}
   Cards:
   - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
   - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}

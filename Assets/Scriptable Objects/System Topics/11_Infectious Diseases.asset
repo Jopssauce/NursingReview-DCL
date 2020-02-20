@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 11_Infectious Diseases
   m_EditorClassIdentifier: 
   TopicName: Infectious Diseases
+  Background: {fileID: 21300000, guid: 74d18896bdad5a14bb0d39fa706306d0, type: 3}
   Cards:
   - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
   - {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407, type: 3}
