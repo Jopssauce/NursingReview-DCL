@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VideoUI: Video Player UI
-  LoadingScreen: {fileID: 0}
+  LoadingScreen: {fileID: 1025837682}
 --- !u!95 &84217280
 Animator:
   serializedVersion: 3
