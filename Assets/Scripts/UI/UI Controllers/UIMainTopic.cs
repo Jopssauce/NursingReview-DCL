@@ -44,6 +44,10 @@ public class UIMainTopic : UIController
         {
             CardFacePanel.SetActive(false);
         }
+        if (Input.GetKeyDown(KeyCode.Backspace) && isVideoPlaying == false)
+        {
+            PersistentSceneManager.ReplaceActiveScene("Topic UI");
+        }
     }
 
     public void SetSelectedTopicText(DataTopic topicData)
