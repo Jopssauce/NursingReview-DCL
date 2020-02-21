@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 1068538017}
   - component: {fileID: 1068538016}
   - component: {fileID: 1068538015}
+  - component: {fileID: 1068538018}
   m_Layer: 5
   m_Name: Systems Button
   m_TagString: Untagged
@@ -499,7 +500,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 448.9, y: 175.6}
-  m_SizeDelta: {x: 840, y: 450}
+  m_SizeDelta: {x: 840, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068538015
 MonoBehaviour:
@@ -592,6 +593,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068538013}
   m_CullTransparentMesh: 0
+--- !u!95 &1068538018
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068538013}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bc920388cbbce64b848f4d5eb009f95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1240647746
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,6 +624,7 @@ GameObject:
   - component: {fileID: 1240647750}
   - component: {fileID: 1240647749}
   - component: {fileID: 1240647748}
+  - component: {fileID: 1240647751}
   m_Layer: 5
   m_Name: Patient Units Button
   m_TagString: Untagged
@@ -629,7 +650,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 448.7, y: -257.3}
-  m_SizeDelta: {x: 840, y: 450}
+  m_SizeDelta: {x: 840, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240647748
 MonoBehaviour:
@@ -722,6 +743,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240647746}
   m_CullTransparentMesh: 0
+--- !u!95 &1240647751
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240647746}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86298134d3a43b4499bdc8a3c5586619, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1268237101
 GameObject:
   m_ObjectHideFlags: 0
