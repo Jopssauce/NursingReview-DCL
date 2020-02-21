@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class VideoPanel : MonoBehaviour, IPointerClickHandler
 {
     public string VideoUI;
+    public GameObject LoadingScreen;
 
     UIMainTopic uiMainTopic;
     Animator animator;
@@ -21,11 +22,13 @@ public class VideoPanel : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         animator.SetTrigger("Zoom");
+        LoadingScreen.SetActive(true);
     }
 
     public void UnZoom()
     {
         animator.SetTrigger("UnZoom");
+        LoadingScreen.SetActive(false);
     }
     //Makes use of animation event in video panel
     public void LoadVideoPlayer()
