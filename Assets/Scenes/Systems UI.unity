@@ -533,6 +533,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8566922247010753257, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.230011
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a17fff3ff23141f4ea83f9d5cce3e9b1, type: 3}
 --- !u!224 &84232459 stripped
@@ -2236,6 +2241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566922247010753257, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.230011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a17fff3ff23141f4ea83f9d5cce3e9b1, type: 3}
@@ -7464,6 +7474,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8566922247010753257, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.230011
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a17fff3ff23141f4ea83f9d5cce3e9b1, type: 3}
 --- !u!224 &2100107618 stripped
@@ -7750,6 +7765,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8566922247010753257, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.230011
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a17fff3ff23141f4ea83f9d5cce3e9b1, type: 3}
 --- !u!224 &2108641170 stripped
@@ -7880,6 +7900,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566922247010753257, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.230011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a17fff3ff23141f4ea83f9d5cce3e9b1, type: 3}
@@ -8078,6 +8103,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8566922247010753257, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.230011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a17fff3ff23141f4ea83f9d5cce3e9b1, type: 3}
