@@ -14,13 +14,13 @@ public class ScrollBackground : MonoBehaviour
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        startPos = rectTransform.position;
+        startPos = rectTransform.anchoredPosition;
     }
 
     private void Update()
     {
         newPos = Mathf.Repeat(Time.time * speed, offset);
-        rectTransform.position = startPos + Vector2.right * newPos;
+        rectTransform.anchoredPosition = startPos + Vector2.right * newPos;
     }
 
 }
