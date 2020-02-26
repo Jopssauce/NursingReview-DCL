@@ -302,11 +302,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 491343622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fb9ca1cc3b779b47888ff40cd7700bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 227646079adf3c5439af88ba2b543876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 491343625}
   ReferenceResolution: {x: 1920, y: 1080}
+  button1: {fileID: 1068538014}
+  button2: {fileID: 1240647747}
+  image: {fileID: 1424037498}
+  leftBar: {fileID: 1378966886}
+  systems: {fileID: 1068538015}
+  patients: {fileID: 1240647748}
 --- !u!1 &832371617
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +553,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 491343627}
-        m_MethodName: LoadActiveScene
+        m_MethodName: TransitionScreen
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -697,7 +703,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 491343627}
-        m_MethodName: LoadActiveScene
+        m_MethodName: TransitionScreen
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -789,7 +795,7 @@ RectTransform:
   m_GameObject: {fileID: 1268237101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 491343626}
   m_RootOrder: 0
@@ -847,7 +853,7 @@ GameObject:
   - component: {fileID: 1378966888}
   - component: {fileID: 1378966887}
   m_Layer: 5
-  m_Name: Bar (1)
+  m_Name: Left Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

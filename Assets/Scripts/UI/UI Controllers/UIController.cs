@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIController : MonoBehaviour
 
     private void Awake()
     {
+        DOTween.Init(DOTween.defaultAutoKill, DOTween.useSafeMode, DOTween.logBehaviour);
         CanvasScaler canvasScaler = Canvas.GetComponent<CanvasScaler>();
         canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasScaler.referenceResolution = ReferenceResolution;

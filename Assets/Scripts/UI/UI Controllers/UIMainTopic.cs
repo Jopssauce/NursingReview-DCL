@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class UIMainTopic : UIController
 {
     public TextMeshProUGUI SelectedTopicText;
     public GameObject CardFacePanel;
+    public List<RectTransform> TopicButtons;
+    public bool PlayAnimation = true;
 
     [Header("Video")]
     public string VideoUI;
@@ -17,20 +20,26 @@ public class UIMainTopic : UIController
     private RenderTexture VideoTexture = null;
 
     [Header("UI Elements")]
+    public RectTransform Header;
+    public RectTransform TopicContentPanel;
     [SerializeField]
     Image Background = null;
     [SerializeField]
     private DataTopic DefaultTopic = null;
     [SerializeField]
     private GameObject CardContent = null;
+    [SerializeField]
+    private GameObject ButtonContent = null;
 
     private List<GameObject> Cards = new List<GameObject>();
     bool isVideoPlaying;
 
-    private void Awake()
+    public override void Initialize()
     {
+        base.Initialize();
         SelectedTopicText.text = DefaultTopic.TopicName;
         InstaniateCards(DefaultTopic);
+        if (PlayAnimation) StartCoroutine(TopicButtonsAnimation());
     }
 
     void Update()
@@ -48,6 +57,36 @@ public class UIMainTopic : UIController
         {
             PersistentSceneManager.ReplaceActiveScene("Topic UI");
         }
+    }
+
+    IEnumerator TopicButtonsAnimation()
+    {
+        int index = 0;
+        while (index < TopicButtons.Count)
+        {
+            Jump(TopicButtons[index], -20);
+            yield return new WaitForSeconds(0.08f);
+            index++;
+        }
+        //Fix Layout Group after animation
+        ButtonContent.GetComponent<VerticalLayoutGroup>().enabled = true;
+        LeftSequence();
+        yield break;
+    }
+
+    public void LeftSequence()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(Jump(Header, -50));
+        sequence.Append(Jump(TopicContentPanel, -50));
+    }
+
+    public Tween Jump(RectTransform rectTransform, float offset)
+    {
+        Vector2 position = rectTransform.anchoredPosition;
+        rectTransform.gameObject.SetActive(true);
+        return rectTransform.DOPunchAnchorPos(new Vector2(0, offset), 0.2f, 1, 1);
+        //return rectTransform.GetComponent<Image>().DOColor(new Color(1, 1, 1, 1), 0.3f).SetOptions(true);
     }
 
     public void SetSelectedTopicText(DataTopic topicData)
