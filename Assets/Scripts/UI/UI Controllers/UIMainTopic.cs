@@ -14,24 +14,19 @@ public class UIMainTopic : UIController
 
     [Header("Video")]
     public string VideoUI;
-    [SerializeField]
-    VideoPanel VideoPanel = null;
-    [SerializeField]
-    private RenderTexture VideoTexture = null;
+    public VideoPanel VideoPanel = null;
+    public RenderTexture VideoTexture = null;
 
     [Header("UI Elements")]
     public RectTransform Header;
     public RectTransform TopicContentPanel;
-    [SerializeField]
-    Image Background = null;
-    [SerializeField]
-    private DataTopic DefaultTopic = null;
-    [SerializeField]
-    private GameObject CardContent = null;
-    [SerializeField]
-    private GameObject ButtonContent = null;
+    public Image Background = null;
+    public DataTopic DefaultTopic = null;
+    public GameObject CardContent = null;
+    public GameObject ButtonContent = null;
 
     private List<GameObject> Cards = new List<GameObject>();
+    private Coroutine cardCoroutine;
     bool isVideoPlaying;
 
     public override void Initialize()
@@ -59,6 +54,7 @@ public class UIMainTopic : UIController
         }
     }
 
+    //Clean up coroutines with sequences TODO
     IEnumerator TopicButtonsAnimation()
     {
         int index = 0;
@@ -79,6 +75,29 @@ public class UIMainTopic : UIController
         Sequence sequence = DOTween.Sequence();
         sequence.Append(Jump(Header, -50));
         sequence.Append(Jump(TopicContentPanel, -50));
+    }
+
+    IEnumerator CardsSequence()
+    {
+        int index = 0;
+        while (index < Cards.Count)
+        {
+            Cards[index].GetComponent<Image>().DOFade(1, 0.4f);
+            yield return new WaitForSeconds(0.08f);
+            index++;
+        }
+        //Fix Layout Group after animation
+        yield break;
+    }
+
+    public void PlayCardSequence()
+    {
+        if(cardCoroutine != null)StopCoroutine(cardCoroutine);
+        for (int i = 0; i < Cards.Count; i++)
+        {
+            Cards[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
+        }
+        cardCoroutine = StartCoroutine(CardsSequence());
     }
 
     public Tween Jump(RectTransform rectTransform, float offset)
@@ -104,6 +123,7 @@ public class UIMainTopic : UIController
             GameObject instance = Instantiate(topicData.Cards[i], CardContent.transform);
             Cards.Add(instance);
         }
+        PlayCardSequence();
     }
 
     private void ClearCards()
