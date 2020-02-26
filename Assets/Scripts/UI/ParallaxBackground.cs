@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ParallaxBackground : MonoBehaviour
 {
     public int scrollSpeed = 100;
+    public bool Reverse = true;
 
     RectTransform rectTransform;
     Vector2 newPos;
@@ -39,7 +40,11 @@ public class ParallaxBackground : MonoBehaviour
 
     void CalculateScroll()
     {
-        newPos = new Vector2(maxWidth, maxHeight) * direction * distance;
+        if(Reverse)newPos = new Vector2(maxWidth, maxHeight) * (-direction) * distance;
+        else
+        {
+            newPos = new Vector2(maxWidth, maxHeight) * (direction) * distance;
+        }
         rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, newPos, Time.deltaTime * scrollSpeed);
     }
 }
