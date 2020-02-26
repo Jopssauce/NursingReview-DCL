@@ -792,7 +792,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 576955846}
-        m_MethodName: InstantiateCards
+        m_MethodName: PlayCardSequence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2126,7 +2126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 576955844}
   ReferenceResolution: {x: 1920, y: 1080}
-  CurrentTopic: {fileID: 0}
   SelectedTopicText: {fileID: 1064961396}
   CardFacePanel: {fileID: 1209424922}
   TopicButtons:
