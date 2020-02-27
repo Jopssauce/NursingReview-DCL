@@ -67,7 +67,7 @@ namespace YoutubePlayer
                     throw new NotSupportedException($"No supported streams in youtube video '{videoId}'");
                 if (videoPlayer == null)
                 {
-                    Debug.Log("Player Null");
+                    Debug.Log("Video Player Null");
                     return;
                 }
                 videoPlayer.source = VideoSource.Url;

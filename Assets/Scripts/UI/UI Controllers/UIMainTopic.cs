@@ -32,6 +32,7 @@ public class UIMainTopic : UIController
     public GameObject ButtonContent = null;
 
     private List<GameObject> Cards = new List<GameObject>();
+    Sequence cardSequence;
     bool isVideoPlaying;
 
     public override void Initialize()
@@ -40,7 +41,6 @@ public class UIMainTopic : UIController
         SelectedTopicText.text = DefaultTopic.TopicName;
         InstaniateCards(DefaultTopic);
         if (PlayAnimation) RightSequence();
-        //if (PlayAnimation) StartCoroutine(TopicButtonsAnimation());
     }
 
     void Update()
@@ -80,11 +80,12 @@ public class UIMainTopic : UIController
 
     public void CardsSequence()
     {
-        Sequence sequence = DOTween.Sequence();
+        if (cardSequence != null) cardSequence.Kill();
+        cardSequence = DOTween.Sequence();
 
         for (int i = 0; i < Cards.Count; i++)
         {
-            sequence.Append(Cards[i].GetComponent<Image>().DOFade(1, 0.15f));
+            cardSequence.Append(Cards[i].GetComponent<Image>().DOFade(1, 0.15f));
         }
     }
 
@@ -107,7 +108,6 @@ public class UIMainTopic : UIController
             rectTransform.gameObject.SetActive(true);
         };
         return tween;
-        //return rectTransform.GetComponent<Image>().DOColor(new Color(1, 1, 1, 1), 0.3f).SetOptions(true);
     }
 
     public void SetSelectedTopicText(DataTopic topicData)
