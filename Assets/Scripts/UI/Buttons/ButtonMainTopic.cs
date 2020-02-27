@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 [RequireComponent(typeof(Button))]
-public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandler
+public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     public DataTopic TopicData;
     public TextMeshProUGUI TextMeshProUGUI;
@@ -15,6 +16,7 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
     public Color Highlighted;
 
     UIMainTopic uiMainTopic;
+    Image image;
 
     public override void Start()
     {
@@ -23,6 +25,11 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
         TextMeshProUGUI.text = TopicData.TopicName;
 
         button.onClick.AddListener(OnClick);
+    }
+
+    void OnEnable()
+    {
+        image = GetComponent<Image>();
     }
 
     void OnClick()
@@ -43,5 +50,16 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerExit(PointerEventData eventData)
     {
         TextMeshProUGUI.color = Default;
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        image.fillAmount = 0;
+        image.DOFillAmount(1, 1f);
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        image.fillAmount = 1;
     }
 }
