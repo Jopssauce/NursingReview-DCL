@@ -66,8 +66,7 @@ public class UIMainTopic : UIController
         Sequence sequence = DOTween.Sequence();
         for (int i = 0; i < TopicButtons.Count; i++)
         {
-            sequence.Append(Jump(TopicButtons[i], -20));
-            sequence.PrependInterval(0.07f);
+            sequence.Append(Jump(TopicButtons[i], -20, 0.08f));
         }
         sequence.onComplete += LeftSequence;
     }
