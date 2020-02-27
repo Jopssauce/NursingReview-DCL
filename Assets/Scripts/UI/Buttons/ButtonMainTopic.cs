@@ -55,7 +55,7 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
     public void OnSelect(BaseEventData eventData)
     {
         image.fillAmount = 0;
-        image.DOFillAmount(1, 1f);
+        image.DOFillAmount(1, 0.7f);
     }
 
     public void OnDeselect(BaseEventData eventData)
