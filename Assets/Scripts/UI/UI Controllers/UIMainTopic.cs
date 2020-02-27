@@ -32,7 +32,6 @@ public class UIMainTopic : UIController
     public GameObject ButtonContent = null;
 
     private List<GameObject> Cards = new List<GameObject>();
-    private Coroutine cardCoroutine;
     bool isVideoPlaying;
 
     public override void Initialize()
@@ -79,27 +78,23 @@ public class UIMainTopic : UIController
         sequence.Append(Jump(TopicContentPanel, -50));
     }
 
-    IEnumerator CardsSequence()
+    public void CardsSequence()
     {
-        int index = 0;
-        while (index < Cards.Count)
+        Sequence sequence = DOTween.Sequence();
+
+        for (int i = 0; i < Cards.Count; i++)
         {
-            Cards[index].GetComponent<Image>().DOFade(1, 0.4f);
-            yield return new WaitForSeconds(0.08f);
-            index++;
+            sequence.Append(Cards[i].GetComponent<Image>().DOFade(1, 0.15f));
         }
-        //Fix Layout Group after animation
-        yield break;
     }
 
     public void PlayCardSequence()
     {
-        if(cardCoroutine != null)StopCoroutine(cardCoroutine);
         for (int i = 0; i < Cards.Count; i++)
         {
             Cards[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
         }
-        cardCoroutine = StartCoroutine(CardsSequence());
+       CardsSequence();
     }
 
     public Tween Jump(RectTransform rectTransform, float offset, float time = 0.1f)
@@ -114,6 +109,7 @@ public class UIMainTopic : UIController
         return tween;
         //return rectTransform.GetComponent<Image>().DOColor(new Color(1, 1, 1, 1), 0.3f).SetOptions(true);
     }
+
     public void SetSelectedTopicText(DataTopic topicData)
     {
         SelectedTopicText.text = topicData.TopicName;
