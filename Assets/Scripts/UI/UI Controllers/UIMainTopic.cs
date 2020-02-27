@@ -40,7 +40,8 @@ public class UIMainTopic : UIController
         base.Initialize();
         SelectedTopicText.text = DefaultTopic.TopicName;
         InstaniateCards(DefaultTopic);
-        if (PlayAnimation) StartCoroutine(TopicButtonsAnimation());
+        if (PlayAnimation) RightSequence();
+        //if (PlayAnimation) StartCoroutine(TopicButtonsAnimation());
     }
 
     void Update()
@@ -60,20 +61,15 @@ public class UIMainTopic : UIController
         }
     }
 
-    //Clean up coroutines with sequences TODO
-    IEnumerator TopicButtonsAnimation()
+    public void RightSequence()
     {
-        int index = 0;
-        while (index < TopicButtons.Count)
+        Sequence sequence = DOTween.Sequence();
+        for (int i = 0; i < TopicButtons.Count; i++)
         {
-            Jump(TopicButtons[index], -20);
-            yield return new WaitForSeconds(0.08f);
-            index++;
+            sequence.Append(Jump(TopicButtons[i], -20));
+            sequence.PrependInterval(0.07f);
         }
-        //Fix Layout Group after animation
-        ButtonContent.GetComponent<VerticalLayoutGroup>().enabled = true;
-        LeftSequence();
-        yield break;
+        sequence.onComplete += LeftSequence;
     }
 
     public void LeftSequence()
@@ -106,14 +102,18 @@ public class UIMainTopic : UIController
         cardCoroutine = StartCoroutine(CardsSequence());
     }
 
-    public Tween Jump(RectTransform rectTransform, float offset)
+    public Tween Jump(RectTransform rectTransform, float offset, float time = 0.1f)
     {
         Vector2 position = rectTransform.anchoredPosition;
-        rectTransform.gameObject.SetActive(true);
-        return rectTransform.DOPunchAnchorPos(new Vector2(0, offset), 0.2f, 1, 1);
+        
+        Tween tween = rectTransform.DOPunchAnchorPos(new Vector2(0, offset), time, 1, 1);
+        tween.onPlay += delegate()
+        {
+            rectTransform.gameObject.SetActive(true);
+        };
+        return tween;
         //return rectTransform.GetComponent<Image>().DOColor(new Color(1, 1, 1, 1), 0.3f).SetOptions(true);
     }
-
     public void SetSelectedTopicText(DataTopic topicData)
     {
         SelectedTopicText.text = topicData.TopicName;
