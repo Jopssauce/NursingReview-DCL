@@ -41,6 +41,7 @@ public class UIMainTopic : UIController
         SelectedTopicText.text = DefaultTopic.TopicName;
         InstaniateCards(DefaultTopic);
         if (PlayAnimation) RightSequence();
+        Canvas.worldCamera = Camera.main;
     }
 
     void Update()

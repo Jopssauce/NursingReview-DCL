@@ -32,6 +32,12 @@ public class UITopic : UIController
 
     }
 
+    public override void Initialize()
+    {
+        base.Initialize();
+        Canvas.worldCamera = Camera.main;
+    }
+
     public Tween Jump(RectTransform rectTransform, float offset)
     {
         Vector2 position = rectTransform.anchoredPosition;
