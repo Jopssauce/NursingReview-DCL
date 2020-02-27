@@ -114,6 +114,8 @@ public class UIMainTopic : UIController
     {
         SelectedTopicText.text = topicData.TopicName;
         Background.sprite = topicData.Background;
+        Background.color = new Color(1,1,1,0);
+        Background.DOFade(1, 0.5f);
         InstaniateCards(topicData);
     }
 
