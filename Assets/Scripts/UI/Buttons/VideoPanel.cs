@@ -9,6 +9,7 @@ public class VideoPanel : MonoBehaviour, IPointerClickHandler
 {
     public string VideoUI;
     public GameObject LoadingScreen;
+    public Animator VideoFrame;
 
     UIMainTopic uiMainTopic;
     Animator animator;
@@ -21,13 +22,17 @@ public class VideoPanel : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        VideoFrame.gameObject.SetActive(true);
+        VideoFrame.SetTrigger("Zoom");
         animator.SetTrigger("Zoom");
         LoadingScreen.SetActive(true);
     }
 
     public void UnZoom()
     {
+        VideoFrame.SetTrigger("UnZoom");
         animator.SetTrigger("UnZoom");
+        VideoFrame.gameObject.SetActive(false);
         LoadingScreen.SetActive(false);
     }
     //Makes use of animation event in video panel
