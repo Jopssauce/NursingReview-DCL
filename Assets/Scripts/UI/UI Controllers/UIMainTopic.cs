@@ -70,6 +70,10 @@ public class UIMainTopic : UIController
             sequence.Append(Jump(TopicButtons[i], -20, 0.08f));
         }
         sequence.onComplete += LeftSequence;
+        sequence.onComplete += delegate ()
+        {
+            ButtonContent.GetComponent<VerticalLayoutGroup>().enabled = true;
+        };
     }
 
     public void LeftSequence()
