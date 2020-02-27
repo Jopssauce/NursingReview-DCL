@@ -16,7 +16,6 @@ public class ButtonCard : UIButton
     {
         Initialize();
         uiMainTopic = GetComponentInParent<UIMainTopic>();
-        GetComponent<Image>().sprite = CardData.UISprite;
         button.onClick.AddListener(OnClick);
     }
 

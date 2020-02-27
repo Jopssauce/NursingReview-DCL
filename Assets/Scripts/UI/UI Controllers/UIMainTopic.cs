@@ -128,6 +128,7 @@ public class UIMainTopic : UIController
         {
             GameObject instance = Instantiate(CardPrefab, CardContent.transform);
             instance.GetComponent<ButtonCard>().CardData = topicData.Cards[i];
+            instance.GetComponent<Image>().sprite = topicData.Cards[i].UISprite;
             Cards.Add(instance);
         }
         PlayCardSequence();
