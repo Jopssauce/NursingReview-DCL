@@ -2221,7 +2221,6 @@ MonoBehaviour:
   Canvas: {fileID: 576955844}
   ReferenceResolution: {x: 1920, y: 1080}
   SelectedTopicText: {fileID: 1064961396}
-  CardFacePanel: {fileID: 1209424922}
   TopicButtons:
   - {fileID: 1529227829}
   - {fileID: 592945806}
@@ -2238,6 +2237,10 @@ MonoBehaviour:
   VideoUI: Video Player UI
   VideoPanel: {fileID: 84217279}
   VideoTexture: {fileID: 8400000, guid: a11199d4e174f9b46b5567b9d87189fc, type: 2}
+  CardPrefab: {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407,
+    type: 3}
+  CardFacePanel: {fileID: 1209424922}
+  CardFace: {fileID: 600830672}
   Header: {fileID: 1559480681}
   TopicContentPanel: {fileID: 1637866313}
   Background: {fileID: 2126873680}
@@ -2596,7 +2599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e5c6408ab54041ac9813b39767c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardBackFace: {fileID: 1474326145}
+  CardData: {fileID: 0}
+  image: {fileID: 600830670}
 --- !u!114 &600830673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4951,7 +4955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1202427092
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5178,7 +5182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1209424923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5998,7 +6002,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e5c6408ab54041ac9813b39767c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardBackFace: {fileID: 1474326145}
+  CardData: {fileID: 0}
+  image: {fileID: 1474326148}
 --- !u!114 &1474326148
 MonoBehaviour:
   m_ObjectHideFlags: 0

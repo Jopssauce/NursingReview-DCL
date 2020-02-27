@@ -7,5 +7,5 @@ public class DataTopic : ScriptableObject
 {
     public string TopicName;
     public Sprite Background;
-    public List<GameObject> Cards;
+    public List<DataCard> Cards;
 }

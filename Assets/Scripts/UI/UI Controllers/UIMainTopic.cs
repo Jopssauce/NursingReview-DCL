@@ -7,8 +7,9 @@ using DG.Tweening;
 
 public class UIMainTopic : UIController
 {
+    
     public TextMeshProUGUI SelectedTopicText;
-    public GameObject CardFacePanel;
+
     public List<RectTransform> TopicButtons;
     public bool PlayAnimation = true;
 
@@ -17,6 +18,11 @@ public class UIMainTopic : UIController
     public VideoPanel VideoPanel = null;
     public RenderTexture VideoTexture = null;
 
+    [Header("Card UI Elements")]
+    public GameObject CardPrefab;
+    public GameObject CardFacePanel;
+    public CardFace CardFace;
+    
     [Header("UI Elements")]
     public RectTransform Header;
     public RectTransform TopicContentPanel;
@@ -120,7 +126,8 @@ public class UIMainTopic : UIController
         ClearCards();
         for (int i = 0; i < topicData.Cards.Count; i++)
         {
-            GameObject instance = Instantiate(topicData.Cards[i], CardContent.transform);
+            GameObject instance = Instantiate(CardPrefab, CardContent.transform);
+            instance.GetComponent<ButtonCard>().CardData = topicData.Cards[i];
             Cards.Add(instance);
         }
         PlayCardSequence();
