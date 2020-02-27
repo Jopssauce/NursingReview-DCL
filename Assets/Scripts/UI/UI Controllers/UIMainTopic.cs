@@ -33,6 +33,7 @@ public class UIMainTopic : UIController
 
     private List<GameObject> Cards = new List<GameObject>();
     Sequence cardSequence;
+    Tween BackgroundFadeTween;
     bool isVideoPlaying;
 
     public override void Initialize()
@@ -114,8 +115,11 @@ public class UIMainTopic : UIController
     {
         SelectedTopicText.text = topicData.TopicName;
         Background.sprite = topicData.Background;
+
+        if (BackgroundFadeTween != null) BackgroundFadeTween.Kill();
         Background.color = new Color(1,1,1,0);
-        Background.DOFade(1, 0.5f);
+        BackgroundFadeTween = Background.DOFade(1, 0.5f);
+
         InstaniateCards(topicData);
     }
 
