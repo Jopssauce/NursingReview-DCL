@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8566922245419607927
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -107,7 +107,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 21300000, guid: b5974f26ccaf96e4e961c8c0ab641ca5,
       type: 3}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 6222d207748e83141a2935b9dca024b5, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -136,6 +136,8 @@ MonoBehaviour:
   TextMeshProUGUI: {fileID: 8566922247010753262}
   Default: {r: 0, g: 0.68235296, b: 0.8000001, a: 1}
   Highlighted: {r: 0.6117647, g: 0.95294124, b: 0.9686275, a: 1}
+  SpriteDefault: {fileID: 21300000, guid: b5974f26ccaf96e4e961c8c0ab641ca5, type: 3}
+  SpriteHighlighted: {fileID: 21300000, guid: 6222d207748e83141a2935b9dca024b5, type: 3}
 --- !u!1 &8566922247010753256
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.799988, y: -6.2299995}
+  m_AnchoredPosition: {x: 8.799988, y: -6.230011}
   m_SizeDelta: {x: -20, y: -12.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8566922247010753263

@@ -7,7 +7,7 @@ using TMPro;
 using DG.Tweening;
 
 [RequireComponent(typeof(Button))]
-public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandler
 {
     public DataTopic TopicData;
     public TextMeshProUGUI TextMeshProUGUI;
@@ -15,8 +15,13 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
     public Color Default;
     public Color Highlighted;
 
+    public Sprite SpriteDefault;
+    public Sprite SpriteHighlighted;
+
     UIMainTopic uiMainTopic;
     Image image;
+
+    bool isSelected = false;
 
     public override void Start()
     {
@@ -35,31 +40,42 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
     void OnClick()
     {
         uiMainTopic.SetSelectedTopicText(TopicData);
-    }
 
-    public void ReplaceActiveScene(string scene)
-    {
-        //PersistentSceneManager.ReplaceActiveScene(scene);
+        //Selected
+        if (uiMainTopic.currentTopicButton != this)
+        {
+            //Deselect Old Button
+            if(uiMainTopic.currentTopicButton != null) uiMainTopic.currentTopicButton.DeselectAction();
+            //Select this button as new
+            SelectAction();
+            uiMainTopic.currentTopicButton = this;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        TextMeshProUGUI.color = Highlighted;
+        if (isSelected == false) TextMeshProUGUI.color = Highlighted;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        TextMeshProUGUI.color = Default;
+        if (isSelected == false)TextMeshProUGUI.color = Default;
     }
 
-    public void OnSelect(BaseEventData eventData)
+    void SelectAction()
     {
+        TextMeshProUGUI.color = Highlighted;
+        isSelected = true;
+        image.sprite = SpriteHighlighted;
         image.fillAmount = 0;
         image.DOFillAmount(1, 0.7f);
     }
 
-    public void OnDeselect(BaseEventData eventData)
+    void DeselectAction()
     {
+        TextMeshProUGUI.color = Default;
+        isSelected = false;
+        image.sprite = SpriteDefault;
         image.fillAmount = 1;
     }
 }

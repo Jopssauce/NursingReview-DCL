@@ -11,6 +11,7 @@ public class UIMainTopic : UIController
     public TextMeshProUGUI SelectedTopicText;
 
     public List<RectTransform> TopicButtons;
+    public ButtonMainTopic currentTopicButton;
     public bool PlayAnimation = true;
 
     [Header("Video")]
