@@ -1704,6 +1704,7 @@ MonoBehaviour:
   - {fileID: 1932496840}
   - {fileID: 1207074114}
   - {fileID: 869176066}
+  currentTopicButton: {fileID: 0}
   PlayAnimation: 1
   VideoUI: Video Player UI
   VideoPanel: {fileID: 84217279}
@@ -6087,11 +6088,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Topic Button
       objectReference: {fileID: 0}
-    - target: {fileID: 8566922245419607926, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8566922245419607927, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6196,11 +6192,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8566922247010753257, guid: a17fff3ff23141f4ea83f9d5cce3e9b1,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -6.230011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a17fff3ff23141f4ea83f9d5cce3e9b1, type: 3}
