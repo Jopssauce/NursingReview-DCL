@@ -21,15 +21,17 @@ public class UIMainTopic : UIController
 
     [Header("Card UI Elements")]
     public GameObject CardPrefab;
-    public GameObject CardFacePanel;
-    public CardFace CardFace;
+    public ScrollRect CardScrollGrid = null;
+    public ScrollRect CardHorizontalScrollRect;
+    public GameObject PrefabCardFace;
     
+
     [Header("UI Elements")]
     public RectTransform Header;
     public RectTransform TopicContentPanel;
     public Image Background = null;
     public DataTopic DefaultTopic = null;
-    public ScrollRect CardScrollGrid = null;
+    
     public GameObject ButtonContent = null;
 
     private List<GameObject> Cards = new List<GameObject>();
@@ -41,7 +43,7 @@ public class UIMainTopic : UIController
     {
         base.Initialize();
         SelectedTopicText.text = DefaultTopic.TopicName;
-        InstaniateCards(DefaultTopic);
+        InstantiateSubTopics(DefaultTopic);
         if (PlayAnimation) RightSequence();
         Canvas.worldCamera = Camera.main;
     }
@@ -55,7 +57,7 @@ public class UIMainTopic : UIController
         }
         if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == false)
         {
-            CardFacePanel.SetActive(false);
+            CardHorizontalScrollRect.gameObject.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Backspace) && isVideoPlaying == false)
         {
@@ -125,24 +127,37 @@ public class UIMainTopic : UIController
         Background.color = new Color(1,1,1,0);
         BackgroundFadeTween = Background.DOFade(1, 0.5f);
 
-        InstaniateCards(topicData);
+        InstantiateSubTopics(topicData);
     }
 
-    private void InstaniateCards(DataTopic topicData)
+    public void OpenHorizontalCardScroller(DataSubTopic subTopicData)
+    {
+        InstantiateCards(subTopicData);
+        CardHorizontalScrollRect.gameObject.SetActive(true);
+    }
+
+    private void InstantiateSubTopics(DataTopic topicData)
     {
         ClearCards();
         for (int i = 0; i < topicData.SubTopics.Count; i++)
         {
             DataSubTopic dataSubTopic = topicData.SubTopics[i];
-            for (int x = 0; x < dataSubTopic.Cards.Count; x++)
-            {
-                GameObject instance = Instantiate(CardPrefab, CardScrollGrid.content.transform);
-                instance.GetComponent<ButtonCard>().CardData = dataSubTopic.Cards[i];
-                instance.GetComponent<Image>().sprite = dataSubTopic.Cards[i].UISprite;
-                Cards.Add(instance);
-            }
+            GameObject instance = Instantiate(CardPrefab, CardScrollGrid.content.transform);
+            instance.GetComponent<ButtonCard>().SubTopicData = dataSubTopic;
+            instance.GetComponent<Image>().sprite = dataSubTopic.UISprite;
+            Cards.Add(instance);
         }
         PlayCardSequence();
+    }
+
+    private void InstantiateCards(DataSubTopic subTopicData)
+    {
+        for (int i = 0; i < subTopicData.Cards.Count; i++)
+        {
+            GameObject instance = Instantiate(PrefabCardFace, CardHorizontalScrollRect.content.transform);
+            CardFace cardFace = PrefabCardFace.GetComponent<CardFace>();
+            cardFace.CardData = subTopicData.Cards[i];
+        }
     }
 
     private void ClearCards()

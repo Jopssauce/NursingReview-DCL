@@ -13,7 +13,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
 
     void OnEnable()
     {
-        //image.sprite = CardData.FrontFace;
+        image.sprite = CardData.FrontFace;
     }
 
     public void OnPointerClick(PointerEventData eventData)

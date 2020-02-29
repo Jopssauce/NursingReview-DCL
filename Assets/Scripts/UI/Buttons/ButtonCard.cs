@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonCard : UIButton
 {
-    public DataCard CardData;
+    public DataSubTopic SubTopicData;
     UIMainTopic uiMainTopic;
     public override void Start()
     {
@@ -21,7 +21,6 @@ public class ButtonCard : UIButton
 
     void OnClick()
     {
-        uiMainTopic.CardFace.CardData = CardData;
-        uiMainTopic.CardFacePanel.SetActive(true);
+        uiMainTopic.OpenHorizontalCardScroller(SubTopicData);
     }
 }
