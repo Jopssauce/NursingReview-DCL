@@ -29,7 +29,7 @@ public class UIMainTopic : UIController
     public RectTransform TopicContentPanel;
     public Image Background = null;
     public DataTopic DefaultTopic = null;
-    public GameObject CardContent = null;
+    public ScrollRect CardScrollGrid = null;
     public GameObject ButtonContent = null;
 
     private List<GameObject> Cards = new List<GameObject>();
@@ -136,7 +136,7 @@ public class UIMainTopic : UIController
             DataSubTopic dataSubTopic = topicData.SubTopics[i];
             for (int x = 0; x < dataSubTopic.Cards.Count; x++)
             {
-                GameObject instance = Instantiate(CardPrefab, CardContent.transform);
+                GameObject instance = Instantiate(CardPrefab, CardScrollGrid.content.transform);
                 instance.GetComponent<ButtonCard>().CardData = dataSubTopic.Cards[i];
                 instance.GetComponent<Image>().sprite = dataSubTopic.Cards[i].UISprite;
                 Cards.Add(instance);
