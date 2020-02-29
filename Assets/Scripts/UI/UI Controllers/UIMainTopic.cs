@@ -131,12 +131,16 @@ public class UIMainTopic : UIController
     private void InstaniateCards(DataTopic topicData)
     {
         ClearCards();
-        for (int i = 0; i < topicData.Cards.Count; i++)
+        for (int i = 0; i < topicData.SubTopics.Count; i++)
         {
-            GameObject instance = Instantiate(CardPrefab, CardContent.transform);
-            instance.GetComponent<ButtonCard>().CardData = topicData.Cards[i];
-            instance.GetComponent<Image>().sprite = topicData.Cards[i].UISprite;
-            Cards.Add(instance);
+            DataSubTopic dataSubTopic = topicData.SubTopics[i];
+            for (int x = 0; x < dataSubTopic.Cards.Count; x++)
+            {
+                GameObject instance = Instantiate(CardPrefab, CardContent.transform);
+                instance.GetComponent<ButtonCard>().CardData = dataSubTopic.Cards[i];
+                instance.GetComponent<Image>().sprite = dataSubTopic.Cards[i].UISprite;
+                Cards.Add(instance);
+            }
         }
         PlayCardSequence();
     }
