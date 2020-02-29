@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 using DG.Tweening;
+
+public delegate void OnInitialize();
+public delegate void OnInstancedSubTopics();
+
 
 public class UIMainTopic : UIController
 {
@@ -24,18 +29,18 @@ public class UIMainTopic : UIController
     public ScrollRect CardScrollGrid = null;
     public ScrollRect CardHorizontalScrollRect;
     public GameObject PrefabCardFace;
-    
 
     [Header("UI Elements")]
     public RectTransform Header;
     public RectTransform TopicContentPanel;
     public Image Background = null;
     public DataTopic DefaultTopic = null;
-    
     public GameObject ButtonContent = null;
 
-    private List<GameObject> Cards = new List<GameObject>();
-    Sequence cardSequence;
+    public event OnInitialize onInitialize;
+    public event OnInstancedSubTopics onInstancedSubTopics;
+
+    public List<GameObject> Cards = new List<GameObject>();
     Tween BackgroundFadeTween;
     bool isVideoPlaying;
 
@@ -44,8 +49,8 @@ public class UIMainTopic : UIController
         base.Initialize();
         SelectedTopicText.text = DefaultTopic.TopicName;
         InstantiateSubTopics(DefaultTopic);
-        if (PlayAnimation) RightSequence();
         Canvas.worldCamera = Camera.main;
+        onInitialize();
     }
 
     void Update()
@@ -63,59 +68,6 @@ public class UIMainTopic : UIController
         {
             PersistentSceneManager.ReplaceActiveScene("Topic UI");
         }
-    }
-
-    public void RightSequence()
-    {
-        Sequence sequence = DOTween.Sequence();
-        for (int i = 0; i < TopicButtons.Count; i++)
-        {
-            sequence.Append(Jump(TopicButtons[i], -20, 0.08f));
-        }
-        sequence.onComplete += LeftSequence;
-        sequence.onComplete += delegate ()
-        {
-            ButtonContent.GetComponent<VerticalLayoutGroup>().enabled = true;
-        };
-    }
-
-    public void LeftSequence()
-    {
-        Sequence sequence = DOTween.Sequence();
-        sequence.Append(Jump(Header, -50));
-        sequence.Append(Jump(TopicContentPanel, -50));
-    }
-
-    public void CardsSequence()
-    {
-        if (cardSequence != null) cardSequence.Kill();
-        cardSequence = DOTween.Sequence();
-
-        for (int i = 0; i < Cards.Count; i++)
-        {
-            cardSequence.Append(Cards[i].GetComponent<Image>().DOFade(1, 0.15f));
-        }
-    }
-
-    public void PlayCardSequence()
-    {
-        for (int i = 0; i < Cards.Count; i++)
-        {
-            Cards[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
-        }
-       CardsSequence();
-    }
-
-    public Tween Jump(RectTransform rectTransform, float offset, float time = 0.1f)
-    {
-        Vector2 position = rectTransform.anchoredPosition;
-        
-        Tween tween = rectTransform.DOPunchAnchorPos(new Vector2(0, offset), time, 1, 1);
-        tween.onPlay += delegate()
-        {
-            rectTransform.gameObject.SetActive(true);
-        };
-        return tween;
     }
 
     public void SetSelectedTopicText(DataTopic topicData)
@@ -147,7 +99,7 @@ public class UIMainTopic : UIController
             instance.GetComponent<Image>().sprite = dataSubTopic.UISprite;
             Cards.Add(instance);
         }
-        PlayCardSequence();
+        onInstancedSubTopics();
     }
 
     private void InstantiateCards(DataSubTopic subTopicData)
