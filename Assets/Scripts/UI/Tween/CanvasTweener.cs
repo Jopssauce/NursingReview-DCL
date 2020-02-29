@@ -47,17 +47,17 @@ public class CanvasTweener : MonoBehaviour
         if (cardSequence != null) cardSequence.Kill();
         cardSequence = DOTween.Sequence();
 
-        for (int i = 0; i < uiMainTopic.Cards.Count; i++)
+        for (int i = 0; i < uiMainTopic.GridCards.Count; i++)
         {
-            cardSequence.Append(uiMainTopic.Cards[i].GetComponent<Image>().DOFade(1, 0.15f));
+            cardSequence.Append(uiMainTopic.GridCards[i].GetComponent<Image>().DOFade(1, 0.15f));
         }
     }
 
     public void PlayCardSequence()
     {
-        for (int i = 0; i < uiMainTopic.Cards.Count; i++)
+        for (int i = 0; i < uiMainTopic.GridCards.Count; i++)
         {
-            uiMainTopic.Cards[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
+            uiMainTopic.GridCards[i].GetComponent<Image>().color = new Color(1, 1, 1, 0);
         }
         CardsSequence();
     }

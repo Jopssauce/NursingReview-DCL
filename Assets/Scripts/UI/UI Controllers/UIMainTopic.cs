@@ -40,7 +40,8 @@ public class UIMainTopic : UIController
     public event OnInitialize onInitialize;
     public event OnInstancedSubTopics onInstancedSubTopics;
 
-    public List<GameObject> Cards = new List<GameObject>();
+    public List<GameObject> GridCards = new List<GameObject>();
+    public List<GameObject> ScrollCards = new List<GameObject>();
     Tween BackgroundFadeTween;
     bool isVideoPlaying;
 
@@ -48,7 +49,7 @@ public class UIMainTopic : UIController
     {
         base.Initialize();
         SelectedTopicText.text = DefaultTopic.TopicName;
-        InstantiateSubTopics(DefaultTopic);
+        InstantiateGridCards(DefaultTopic);
         Canvas.worldCamera = Camera.main;
         onInitialize();
     }
@@ -62,7 +63,7 @@ public class UIMainTopic : UIController
         }
         if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == false)
         {
-            CardHorizontalScrollRect.gameObject.SetActive(false);
+            CloseHorizontalCardScroller();
         }
         if (Input.GetKeyDown(KeyCode.Backspace) && isVideoPlaying == false)
         {
@@ -79,46 +80,54 @@ public class UIMainTopic : UIController
         Background.color = new Color(1,1,1,0);
         BackgroundFadeTween = Background.DOFade(1, 0.5f);
 
-        InstantiateSubTopics(topicData);
+        InstantiateGridCards(topicData);
     }
 
     public void OpenHorizontalCardScroller(DataSubTopic subTopicData)
     {
-        InstantiateCards(subTopicData);
+        InstantiateScrollCards(subTopicData);
         CardHorizontalScrollRect.gameObject.SetActive(true);
     }
 
-    private void InstantiateSubTopics(DataTopic topicData)
+    public void CloseHorizontalCardScroller()
     {
-        ClearCards();
+        ClearGameobjects(ScrollCards);
+        CardHorizontalScrollRect.gameObject.SetActive(false);
+    }
+
+    private void InstantiateGridCards(DataTopic topicData)
+    {
+        ClearGameobjects(GridCards);
         for (int i = 0; i < topicData.SubTopics.Count; i++)
         {
             DataSubTopic dataSubTopic = topicData.SubTopics[i];
             GameObject instance = Instantiate(CardPrefab, CardScrollGrid.content.transform);
             instance.GetComponent<ButtonCard>().SubTopicData = dataSubTopic;
             instance.GetComponent<Image>().sprite = dataSubTopic.UISprite;
-            Cards.Add(instance);
+            GridCards.Add(instance);
         }
         onInstancedSubTopics();
     }
 
-    private void InstantiateCards(DataSubTopic subTopicData)
+    private void InstantiateScrollCards(DataSubTopic subTopicData)
     {
+        ClearGameobjects(ScrollCards);
         for (int i = 0; i < subTopicData.Cards.Count; i++)
         {
             GameObject instance = Instantiate(PrefabCardFace, CardHorizontalScrollRect.content.transform);
             CardFace cardFace = PrefabCardFace.GetComponent<CardFace>();
             cardFace.CardData = subTopicData.Cards[i];
+            ScrollCards.Add(instance);
         }
     }
 
-    private void ClearCards()
+    private void ClearGameobjects(List<GameObject> list)
     {
-        for (int i = 0; i < Cards.Count; i++)
+        for (int i = 0; i < list.Count; i++)
         {
-            Destroy(Cards[i]);
+            Destroy(list[i]);
         }
-        Cards.Clear();
+        list.Clear();
     }
 
     public void LoadVideoPlayer()
