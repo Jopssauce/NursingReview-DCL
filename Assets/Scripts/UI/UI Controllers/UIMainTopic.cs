@@ -87,6 +87,8 @@ public class UIMainTopic : UIController
     {
         InstantiateScrollCards(subTopicData);
         CardHorizontalScrollRect.gameObject.SetActive(true);
+        CardHorizontalScrollRect.horizontalNormalizedPosition = 1f;
+        CardHorizontalScrollRect.DOHorizontalNormalizedPos(0, 0.5f);
     }
 
     public void CloseHorizontalCardScroller()
