@@ -32,6 +32,7 @@ public class UIMainTopic : UIController
     public CardFace CardFace;
 
     [Header("UI Elements")]
+    public GameObject RaycastBlocker;
     public RectTransform Header;
     public RectTransform TopicContentPanel;
     public Image Background = null;

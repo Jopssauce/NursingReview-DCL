@@ -36,6 +36,10 @@ public class CanvasTweener : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         sequence.Append(Jump(uiMainTopic.Header, -50));
         sequence.Append(Jump(uiMainTopic.TopicContentPanel, -50));
+        sequence.onComplete += delegate ()
+        {
+            uiMainTopic.RaycastBlocker.SetActive(false);
+        };
     }
 
     public void CardsSequence()
