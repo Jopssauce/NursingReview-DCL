@@ -14,10 +14,6 @@ public class CanvasTweener : MonoBehaviour
     {
         uiMainTopic = Canvas.GetComponent<UIMainTopic>();
         uiMainTopic.onInstancedSubTopics += PlayCardSequence;
-    }
-
-    private void Start()
-    {
         if (uiMainTopic.PlayAnimation) uiMainTopic.onInitialize += RightSequence;
     }
 
