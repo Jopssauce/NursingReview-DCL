@@ -28,7 +28,8 @@ public class UIMainTopic : UIController
     public GameObject CardPrefab;
     public ScrollRect CardScrollGrid = null;
     public ScrollRect CardHorizontalScrollRect;
-    public GameObject PrefabCardFace;
+    public GameObject PrefabScrollCard;
+    public CardFace CardFace;
 
     [Header("UI Elements")]
     public RectTransform Header;
@@ -97,6 +98,12 @@ public class UIMainTopic : UIController
         CardHorizontalScrollRect.gameObject.SetActive(false);
     }
 
+    public void ActivateCardFace(DataCard CardData)
+    {
+        CardFace.CardData = CardData;
+        CardFace.gameObject.SetActive(true);
+    }
+
     private void InstantiateGridCards(DataTopic topicData)
     {
         ClearGameobjects(GridCards);
@@ -116,9 +123,10 @@ public class UIMainTopic : UIController
         ClearGameobjects(ScrollCards);
         for (int i = 0; i < subTopicData.Cards.Count; i++)
         {
-            GameObject instance = Instantiate(PrefabCardFace, CardHorizontalScrollRect.content.transform);
-            CardFace cardFace = PrefabCardFace.GetComponent<CardFace>();
-            cardFace.CardData = subTopicData.Cards[i];
+            GameObject instance = Instantiate(PrefabScrollCard, CardHorizontalScrollRect.content.transform);
+            UIScrollCard scrollCard = instance.GetComponent<UIScrollCard>();
+            scrollCard.CardData = subTopicData.Cards[i];
+            scrollCard.uiMainTopic = this;
             ScrollCards.Add(instance);
         }
     }

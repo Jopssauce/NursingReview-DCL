@@ -9,7 +9,10 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
     public DataCard CardData;
     public Image image;
 
-    bool IsBack;
+    public UIMainTopic uiMainTopic;
+
+    bool isBack;
+    bool isSelected;
 
     void OnEnable()
     {
@@ -23,15 +26,15 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
 
     void SwitchFaces()
     {
-        if (IsBack)
+        if (isBack)
         {
             image.sprite = CardData.FrontFace;
-            IsBack = false;
+            isBack = false;
         }
         else
         {
             image.sprite = CardData.BackFace;
-            IsBack = true;
+            isBack = true;
         }
     }
 }
