@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardFace : MonoBehaviour, IPointerClickHandler
+public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler
 {
     public DataCard CardData;
     public Image image;
@@ -12,16 +12,27 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
     public UIMainTopic uiMainTopic;
 
     bool isBack;
-    bool isSelected;
+    bool isDragged;
 
     void OnEnable()
     {
         image.sprite = CardData.FrontFace;
+        image.transform.localScale = Vector3.one;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SwitchFaces();
+        if(isDragged == false)SwitchFaces();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        isDragged = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isDragged = false;
     }
 
     void SwitchFaces()
