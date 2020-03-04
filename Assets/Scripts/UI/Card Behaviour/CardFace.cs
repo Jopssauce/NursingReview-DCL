@@ -18,6 +18,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         image.sprite = CardData.FrontFace;
         image.transform.localScale = Vector3.one;
+        image.transform.position += new Vector3(0, 200, 0);
     }
 
     public void OnPointerClick(PointerEventData eventData)
