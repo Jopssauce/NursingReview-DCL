@@ -1515,8 +1515,8 @@ RectTransform:
   - {fileID: 13516356}
   - {fileID: 1637866313}
   - {fileID: 2001655936}
-  - {fileID: 789612817}
   - {fileID: 1341052339}
+  - {fileID: 789612817}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2284,11 +2284,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Card Face
-      objectReference: {fileID: 0}
-    - target: {fileID: 2454063437752962175, guid: ed803869eb1de2f49876da0651b3c389,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed803869eb1de2f49876da0651b3c389, type: 3}
@@ -4042,7 +4037,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 576955845}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
