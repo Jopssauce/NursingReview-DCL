@@ -13,14 +13,6 @@ MonoBehaviour:
   m_Name: 5_Pediatrics
   m_EditorClassIdentifier: 
   TopicName: Pediatrics
-  Background: {fileID: 0}
-  Cards:
-  - {fileID: 11400000, guid: 846d193ac6921d7418f2d967d1c0018c, type: 2}
-  - {fileID: 11400000, guid: 846d193ac6921d7418f2d967d1c0018c, type: 2}
-  - {fileID: 11400000, guid: 846d193ac6921d7418f2d967d1c0018c, type: 2}
-  - {fileID: 11400000, guid: 846d193ac6921d7418f2d967d1c0018c, type: 2}
-  - {fileID: 11400000, guid: 846d193ac6921d7418f2d967d1c0018c, type: 2}
-  - {fileID: 11400000, guid: 846d193ac6921d7418f2d967d1c0018c, type: 2}
-  - {fileID: 11400000, guid: 846d193ac6921d7418f2d967d1c0018c, type: 2}
+  Background: {fileID: 21300000, guid: 3daa90786d909b34b8bb8846e2b68b18, type: 3}
   SubTopics:
   - {fileID: 11400000, guid: 0df1031ef8595854191e39bbead44b7a, type: 2}
