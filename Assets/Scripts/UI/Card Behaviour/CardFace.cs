@@ -10,9 +10,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public DataCard CardData;
     public Image FrontFace;
     public Image BackFace;
-    public RawImage rawImage;
-
-    public UIMainTopic uiMainTopic;
+    public ScrollRect scrollRect;
 
     bool isBack;
     bool isDragged;
@@ -44,11 +42,11 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         if (isBack)
         {
-            Sequence sequence = DOTween.Sequence();
             BackFace.gameObject.SetActive(true);
             Tween tween = BackFace.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
             FrontFace.transform.DORotate(new Vector3(0, 180, 0), 0.3f);
             BackFace.transform.localScale = FrontFace.transform.localScale;
+            scrollRect.content = BackFace.GetComponent<RectTransform>();
 
             if (tween.position % 2 == 0)
                 FrontFace.gameObject.SetActive(false);
@@ -61,6 +59,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             Tween tween = FrontFace.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
             BackFace.transform.DORotate(new Vector3(0, -180, 0), 0.3f);
             FrontFace.transform.localScale = BackFace.transform.localScale;
+            scrollRect.content = FrontFace.GetComponent<RectTransform>();
 
             if (tween.position % 2 == 0)
                 BackFace.gameObject.SetActive(false);
