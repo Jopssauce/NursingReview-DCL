@@ -30,17 +30,17 @@ public class UIController : MonoBehaviour
         PersistentSceneManager = PersistentSceneManager.instance;
     }
 
-    public void LoadScene(string sceneToLoad)
+    public virtual void LoadScene(string sceneToLoad)
     {
         PersistentSceneManager.LoadSceneAdditive(sceneToLoad);
     }
 
-    public void LoadActiveScene(string sceneToLoad)
+    public virtual void LoadActiveScene(string sceneToLoad)
     {
         PersistentSceneManager.ReplaceActiveScene(sceneToLoad);
     }
 
-    public void QuitApp()
+    public virtual void QuitApp()
     {
         Application.Quit();
     }
