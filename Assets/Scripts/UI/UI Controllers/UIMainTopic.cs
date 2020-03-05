@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Threading.Tasks;
 using TMPro;
 using DG.Tweening;
 
 public delegate void OnInitialize();
 public delegate void OnInstancedSubTopics();
+public delegate void OnInstancedTopics();
 public delegate void OnLoadVideoPlayer();
 public delegate void OnUnloadVideoPlayer();
 
@@ -24,7 +26,8 @@ public class UIMainTopic : UIController
     public string VideoUI;
     public RenderTexture VideoTexture;
 
-    [Header("Card UI Prefabs")]
+    [Header("Prefabs")]
+    public GameObject MainTopicButton;
     public GameObject PrefabCard;
     public GameObject PrefabScrollCard;
 
@@ -41,10 +44,12 @@ public class UIMainTopic : UIController
 
     public event OnInitialize onInitialize;
     public event OnInstancedSubTopics onInstancedSubTopics;
+    public event OnInstancedTopics onInstancedTopics;
     public event OnLoadVideoPlayer onLoadVideoPlayer;
     public event OnUnloadVideoPlayer onUnloadVideoPlayer;
 
     [Header("Lists")]
+    public List<DataTopic> Topics;
     public List<RectTransform> TopicButtons;
     public List<GameObject> GridCards = new List<GameObject>();
     public List<GameObject> ScrollCards = new List<GameObject>();
@@ -58,7 +63,8 @@ public class UIMainTopic : UIController
         SelectedTopicText.text = DefaultTopic.TopicName;
         InstantiateGridCards(DefaultTopic);
         Canvas.worldCamera = Camera.main;
-        onInitialize();
+        InstantiateTopics();
+        onInitialize?.Invoke();
     }
 
     void Update()
@@ -108,6 +114,25 @@ public class UIMainTopic : UIController
     {
         UICardsViewerGroup.CardFace.CardData = CardData;
         UICardsViewerGroup.CardFace.gameObject.SetActive(true);
+    }
+
+    private void InstantiateTopics()
+    {
+        for (int i = 0; i < Topics.Count; i++)
+        {
+            ButtonMainTopic button;
+            GameObject instance = Instantiate(MainTopicButton, UITopicButtonScrollView.ScrollRect.content.transform);
+            TopicButtons.Add(instance.GetComponent<RectTransform>());
+            button = instance.GetComponent<ButtonMainTopic>();
+            button.TopicData = Topics[i];
+            button.TextMeshProUGUI.text = Topics[i].TopicName;
+            instance.GetComponent<CanvasGroup>().alpha = 0;
+        }
+        LayoutRebuilder.ForceRebuildLayoutImmediate(UITopicButtonScrollView.ScrollRect.content);
+        UITopicButtonScrollView.ScrollRect
+            .content.GetComponent<VerticalLayoutGroup>().enabled = false;
+
+        onInstancedTopics?.Invoke();
     }
 
     private void InstantiateGridCards(DataTopic topicData)

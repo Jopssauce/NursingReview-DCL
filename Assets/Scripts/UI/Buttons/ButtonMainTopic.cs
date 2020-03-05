@@ -27,8 +27,6 @@ public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandl
     {
         base.Start();
         uiMainTopic = GetComponentInParent<UIMainTopic>();
-        TextMeshProUGUI.text = TopicData.TopicName;
-
         button.onClick.AddListener(OnClick);
     }
 

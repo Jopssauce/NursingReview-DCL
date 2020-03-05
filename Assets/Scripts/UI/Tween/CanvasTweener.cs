@@ -14,7 +14,7 @@ public class CanvasTweener : MonoBehaviour
     {
         uiMainTopic = Canvas.GetComponent<UIMainTopic>();
         uiMainTopic.onInstancedSubTopics += PlayCardSequence;
-        if (uiMainTopic.PlayStartAnimation) uiMainTopic.onInitialize += RightSequence;
+        if (uiMainTopic.PlayStartAnimation) uiMainTopic.onInstancedTopics += RightSequence;
 
         uiMainTopic.onLoadVideoPlayer += delegate() { HideUI(); };
         uiMainTopic.onUnloadVideoPlayer += delegate () { UnHideUI(); };
@@ -31,6 +31,7 @@ public class CanvasTweener : MonoBehaviour
         sequence.onComplete += LeftSequence;
         sequence.onComplete += delegate ()
         {
+            
             uiMainTopic.UITopicButtonScrollView.ScrollRect.content.GetComponent<VerticalLayoutGroup>().enabled = true;
         };
     }
@@ -38,8 +39,9 @@ public class CanvasTweener : MonoBehaviour
     public void LeftSequence()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(Jump(uiMainTopic.UIContentGroup.Header.GetComponent<RectTransform>(), -50));
-        sequence.Append(Jump(uiMainTopic.UIContentGroup.GetComponent<RectTransform>(), -50));
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.Header.GetComponent<RectTransform>(), -20, 0.08f));
+        sequence.AppendInterval(0.08f);
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.GetComponent<RectTransform>(), -20, 0.08f));
         sequence.onComplete += delegate ()
         {
             uiMainTopic.RaycastBlocker.SetActive(false);
@@ -73,7 +75,8 @@ public class CanvasTweener : MonoBehaviour
         Tween tween = rectTransform.DOPunchAnchorPos(new Vector2(0, offset), time, 1, 1);
         tween.onPlay += delegate ()
         {
-            rectTransform.gameObject.SetActive(true);
+            rectTransform.GetComponent<CanvasGroup>().DOFade(1, 0.3f);
+            
         };
         return tween;
     }
