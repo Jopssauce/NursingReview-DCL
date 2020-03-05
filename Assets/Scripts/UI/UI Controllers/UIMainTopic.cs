@@ -142,7 +142,9 @@ public class UIMainTopic : UIController
         {
             DataSubTopic dataSubTopic = topicData.SubTopics[i];
             GameObject instance = Instantiate(PrefabCard, UIContentGroup.CardGridView.content.transform);
-            instance.GetComponent<ButtonCard>().SubTopicData = dataSubTopic;
+            ButtonCard buttonCard = instance.GetComponent<ButtonCard>();
+            buttonCard.SubTopicData = dataSubTopic;
+            buttonCard.UISubTopicMask.TextMeshProUGUI.text = dataSubTopic.Name;
             instance.GetComponent<Image>().sprite = dataSubTopic.UISprite;
             GridCards.Add(instance);
         }

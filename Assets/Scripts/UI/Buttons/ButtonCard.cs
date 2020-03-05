@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ButtonCard : UIButton
 {
     public DataSubTopic SubTopicData;
+    public UISubTopicMask UISubTopicMask;
     UIMainTopic uiMainTopic;
     public override void Start()
     {
