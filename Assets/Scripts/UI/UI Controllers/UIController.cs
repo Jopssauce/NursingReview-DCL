@@ -39,4 +39,9 @@ public class UIController : MonoBehaviour
     {
         PersistentSceneManager.ReplaceActiveScene(sceneToLoad);
     }
+
+    public void QuitApp()
+    {
+        Application.Quit();
+    }
 }
