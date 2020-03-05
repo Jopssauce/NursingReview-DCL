@@ -27,15 +27,15 @@ public class CanvasTweener : MonoBehaviour
         sequence.onComplete += LeftSequence;
         sequence.onComplete += delegate ()
         {
-            uiMainTopic.ButtonContent.GetComponent<VerticalLayoutGroup>().enabled = true;
+            uiMainTopic.UITopicButtonScrollView.ScrollRect.content.GetComponent<VerticalLayoutGroup>().enabled = true;
         };
     }
 
     public void LeftSequence()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(Jump(uiMainTopic.Header, -50));
-        sequence.Append(Jump(uiMainTopic.TopicContentPanel, -50));
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.Header.GetComponent<RectTransform>(), -50));
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.GetComponent<RectTransform>(), -50));
         sequence.onComplete += delegate ()
         {
             uiMainTopic.RaycastBlocker.SetActive(false);

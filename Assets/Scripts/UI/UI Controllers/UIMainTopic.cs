@@ -21,23 +21,22 @@ public class UIMainTopic : UIController
 
     [Header("Video")]
     public string VideoUI;
-    public VideoPanel VideoPanel = null;
     public RenderTexture VideoTexture = null;
 
     [Header("Card UI Elements")]
     public GameObject CardPrefab;
-    public ScrollRect CardScrollGrid = null;
-    public ScrollRect CardHorizontalScrollRect;
     public GameObject PrefabScrollCard;
-    public CardFace CardFace;
 
     [Header("UI Elements")]
     public GameObject RaycastBlocker;
-    public RectTransform Header;
-    public RectTransform TopicContentPanel;
-    public Image Background = null;
     public DataTopic DefaultTopic = null;
-    public GameObject ButtonContent = null;
+
+    [Header("Groups")]
+    public UITopicButtonScrollView UITopicButtonScrollView;
+    public UIContentGroup UIContentGroup;
+    public UIBackgroundGroup UIBackgroundGroup;
+    public UINavigationGroup UINavigationGroup;
+    public UICardsViewerGroup UICardsViewerGroup;
 
     public event OnInitialize onInitialize;
     public event OnInstancedSubTopics onInstancedSubTopics;
@@ -61,7 +60,7 @@ public class UIMainTopic : UIController
         if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == true)
         {
             UnLoadVideoPlayer();
-            VideoPanel.UnZoom();
+            UIContentGroup.VideoPanel.GetComponent<VideoPanel>().UnZoom();
         }
         if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == false)
         {
@@ -76,11 +75,11 @@ public class UIMainTopic : UIController
     public void SetSelectedTopicText(DataTopic topicData)
     {
         SelectedTopicText.text = topicData.TopicName;
-        Background.sprite = topicData.Background;
+        UIBackgroundGroup.Background.sprite = topicData.Background;
 
         if (BackgroundFadeTween != null) BackgroundFadeTween.Kill();
-        Background.color = new Color(1,1,1,0);
-        BackgroundFadeTween = Background.DOFade(1, 0.5f);
+        UIBackgroundGroup.Background.color = new Color(1,1,1,0);
+        BackgroundFadeTween = UIBackgroundGroup.Background.DOFade(1, 0.5f);
 
         InstantiateGridCards(topicData);
     }
@@ -88,21 +87,21 @@ public class UIMainTopic : UIController
     public void OpenHorizontalCardScroller(DataSubTopic subTopicData)
     {
         InstantiateScrollCards(subTopicData);
-        CardHorizontalScrollRect.gameObject.SetActive(true);
-        CardHorizontalScrollRect.horizontalNormalizedPosition = 1f;
-        CardHorizontalScrollRect.DOHorizontalNormalizedPos(0, 0.5f);
+        UICardsViewerGroup.ScrollRect.gameObject.SetActive(true);
+        UICardsViewerGroup.ScrollRect.horizontalNormalizedPosition = 1f;
+        UICardsViewerGroup.ScrollRect.DOHorizontalNormalizedPos(0, 0.5f);
     }
 
     public void CloseHorizontalCardScroller()
     {
         ClearGameobjects(ScrollCards);
-        CardHorizontalScrollRect.gameObject.SetActive(false);
+        UICardsViewerGroup.ScrollRect.gameObject.SetActive(false);
     }
 
     public void ActivateCardFace(DataCard CardData)
     {
-        CardFace.CardData = CardData;
-        CardFace.gameObject.SetActive(true);
+        UICardsViewerGroup.CardFace.CardData = CardData;
+        UICardsViewerGroup.CardFace.gameObject.SetActive(true);
     }
 
     private void InstantiateGridCards(DataTopic topicData)
@@ -111,7 +110,7 @@ public class UIMainTopic : UIController
         for (int i = 0; i < topicData.SubTopics.Count; i++)
         {
             DataSubTopic dataSubTopic = topicData.SubTopics[i];
-            GameObject instance = Instantiate(CardPrefab, CardScrollGrid.content.transform);
+            GameObject instance = Instantiate(CardPrefab, UIContentGroup.CardGridView.content.transform);
             instance.GetComponent<ButtonCard>().SubTopicData = dataSubTopic;
             instance.GetComponent<Image>().sprite = dataSubTopic.UISprite;
             GridCards.Add(instance);
@@ -124,7 +123,7 @@ public class UIMainTopic : UIController
         ClearGameobjects(ScrollCards);
         for (int i = 0; i < subTopicData.Cards.Count; i++)
         {
-            GameObject instance = Instantiate(PrefabScrollCard, CardHorizontalScrollRect.content.transform);
+            GameObject instance = Instantiate(PrefabScrollCard, UICardsViewerGroup.ScrollRect.content.transform);
             UIScrollCard scrollCard = instance.GetComponent<UIScrollCard>();
             scrollCard.CardData = subTopicData.Cards[i];
             scrollCard.uiMainTopic = this;
