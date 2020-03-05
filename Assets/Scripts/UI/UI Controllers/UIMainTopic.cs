@@ -14,24 +14,23 @@ public delegate void OnUnloadVideoPlayer();
 
 public class UIMainTopic : UIController
 {
-    
-    public TextMeshProUGUI SelectedTopicText;
-
-    public List<RectTransform> TopicButtons;
     public ButtonMainTopic currentTopicButton;
-    public bool PlayAnimation = true;
+    public DataTopic DefaultTopic; 
+
+    [Header("Animation Settings")]
+    public bool PlayStartAnimation = true;
 
     [Header("Video")]
     public string VideoUI;
-    public RenderTexture VideoTexture = null;
+    public RenderTexture VideoTexture;
 
-    [Header("Card UI Elements")]
-    public GameObject CardPrefab;
+    [Header("Card UI Prefabs")]
+    public GameObject PrefabCard;
     public GameObject PrefabScrollCard;
 
-    [Header("UI Elements")]
+    [Header("General Elements")]
     public GameObject RaycastBlocker;
-    public DataTopic DefaultTopic = null;
+    public TextMeshProUGUI SelectedTopicText;
 
     [Header("Groups")]
     public UITopicButtonScrollView UITopicButtonScrollView;
@@ -45,8 +44,11 @@ public class UIMainTopic : UIController
     public event OnLoadVideoPlayer onLoadVideoPlayer;
     public event OnUnloadVideoPlayer onUnloadVideoPlayer;
 
+    [Header("Lists")]
+    public List<RectTransform> TopicButtons;
     public List<GameObject> GridCards = new List<GameObject>();
     public List<GameObject> ScrollCards = new List<GameObject>();
+
     Tween BackgroundFadeTween;
     bool isVideoPlaying;
 
@@ -114,7 +116,7 @@ public class UIMainTopic : UIController
         for (int i = 0; i < topicData.SubTopics.Count; i++)
         {
             DataSubTopic dataSubTopic = topicData.SubTopics[i];
-            GameObject instance = Instantiate(CardPrefab, UIContentGroup.CardGridView.content.transform);
+            GameObject instance = Instantiate(PrefabCard, UIContentGroup.CardGridView.content.transform);
             instance.GetComponent<ButtonCard>().SubTopicData = dataSubTopic;
             instance.GetComponent<Image>().sprite = dataSubTopic.UISprite;
             GridCards.Add(instance);

@@ -1570,7 +1570,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 546157989}
   ReferenceResolution: {x: 1920, y: 1080}
+  currentTopicButton: {fileID: 0}
+  DefaultTopic: {fileID: 11400000, guid: 17547aae88ffa7f4a9fe49c8c31f4d9a, type: 2}
+  PlayStartAnimation: 1
+  VideoUI: Video Player UI
+  VideoTexture: {fileID: 8400000, guid: a11199d4e174f9b46b5567b9d87189fc, type: 2}
+  PrefabCard: {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407,
+    type: 3}
+  PrefabScrollCard: {fileID: 2454063437752962175, guid: 5e1ab9931e69fae47be2b96bfd300c96,
+    type: 3}
+  RaycastBlocker: {fileID: 1925179688}
   SelectedTopicText: {fileID: 1499321493}
+  UITopicButtonScrollView: {fileID: 726465899}
+  UIContentGroup: {fileID: 1833956995}
+  UIBackgroundGroup: {fileID: 824379209}
+  UINavigationGroup: {fileID: 567312281}
+  UICardsViewerGroup: {fileID: 671094271}
   TopicButtons:
   - {fileID: 1762410792}
   - {fileID: 2108684186}
@@ -1583,23 +1598,6 @@ MonoBehaviour:
   - {fileID: 81785755}
   - {fileID: 2114112236}
   - {fileID: 91238894}
-  currentTopicButton: {fileID: 0}
-  PlayAnimation: 1
-  VideoUI: Video Player UI
-  VideoTexture: {fileID: 8400000, guid: a11199d4e174f9b46b5567b9d87189fc, type: 2}
-  CardPrefab: {fileID: 2518598733264939759, guid: 9375eea1c3fb0a94c836f2291d149407,
-    type: 3}
-  CardHorizontalScrollRect: {fileID: 82703005}
-  PrefabScrollCard: {fileID: 2454063437752962175, guid: 5e1ab9931e69fae47be2b96bfd300c96,
-    type: 3}
-  CardFace: {fileID: 1944257430}
-  RaycastBlocker: {fileID: 1925179688}
-  DefaultTopic: {fileID: 11400000, guid: 17547aae88ffa7f4a9fe49c8c31f4d9a, type: 2}
-  UITopicButtonScrollView: {fileID: 726465899}
-  UIContentGroup: {fileID: 1833956995}
-  UIBackgroundGroup: {fileID: 824379209}
-  UINavigationGroup: {fileID: 567312281}
-  UICardsViewerGroup: {fileID: 671094271}
   GridCards: []
   ScrollCards: []
 --- !u!114 &546157987

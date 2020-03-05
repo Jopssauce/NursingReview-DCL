@@ -14,7 +14,7 @@ public class CanvasTweener : MonoBehaviour
     {
         uiMainTopic = Canvas.GetComponent<UIMainTopic>();
         uiMainTopic.onInstancedSubTopics += PlayCardSequence;
-        if (uiMainTopic.PlayAnimation) uiMainTopic.onInitialize += RightSequence;
+        if (uiMainTopic.PlayStartAnimation) uiMainTopic.onInitialize += RightSequence;
 
         uiMainTopic.onLoadVideoPlayer += delegate() { HideUI(); };
         uiMainTopic.onUnloadVideoPlayer += delegate () { UnHideUI(); };
