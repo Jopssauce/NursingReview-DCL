@@ -15,6 +15,10 @@ public class CanvasTweener : MonoBehaviour
         uiMainTopic = Canvas.GetComponent<UIMainTopic>();
         uiMainTopic.onInstancedSubTopics += PlayCardSequence;
         if (uiMainTopic.PlayAnimation) uiMainTopic.onInitialize += RightSequence;
+
+        uiMainTopic.onLoadVideoPlayer += delegate() { HideUI(); };
+        uiMainTopic.onUnloadVideoPlayer += delegate () { UnHideUI(); };
+
     }
 
     public void RightSequence()
@@ -72,5 +76,21 @@ public class CanvasTweener : MonoBehaviour
             rectTransform.gameObject.SetActive(true);
         };
         return tween;
+    }
+
+    public void HideUI(float time = 0.3f)
+    {
+        uiMainTopic.UITopicButtonScrollView.ParentCanvasGroup.DOFade(0, time);
+        uiMainTopic.UIContentGroup.ParentCanvasGroup.DOFade(0, time);
+        uiMainTopic.UINavigationGroup.ParentCanvasGroup.DOFade(0, time);
+        uiMainTopic.UICardsViewerGroup.ParentCanvasGroup.DOFade(0, time);
+    }
+
+    public void UnHideUI(float time = 0.3f)
+    {
+        uiMainTopic.UITopicButtonScrollView.ParentCanvasGroup.DOFade(1, time);
+        uiMainTopic.UIContentGroup.ParentCanvasGroup.DOFade(1, time);
+        uiMainTopic.UINavigationGroup.ParentCanvasGroup.DOFade(1, time);
+        uiMainTopic.UICardsViewerGroup.ParentCanvasGroup.DOFade(1, time);
     }
 }
