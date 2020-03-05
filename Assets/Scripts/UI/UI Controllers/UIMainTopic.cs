@@ -8,6 +8,8 @@ using DG.Tweening;
 
 public delegate void OnInitialize();
 public delegate void OnInstancedSubTopics();
+public delegate void OnLoadVideoPlayer();
+public delegate void OnUnloadVideoPlayer();
 
 
 public class UIMainTopic : UIController
@@ -40,6 +42,8 @@ public class UIMainTopic : UIController
 
     public event OnInitialize onInitialize;
     public event OnInstancedSubTopics onInstancedSubTopics;
+    public event OnLoadVideoPlayer onLoadVideoPlayer;
+    public event OnUnloadVideoPlayer onUnloadVideoPlayer;
 
     public List<GameObject> GridCards = new List<GameObject>();
     public List<GameObject> ScrollCards = new List<GameObject>();
@@ -145,11 +149,13 @@ public class UIMainTopic : UIController
         VideoTexture.Release();
         isVideoPlaying = true;
         PersistentSceneManager.LoadActiveAdditive(VideoUI);
+        onLoadVideoPlayer();
     }
 
     public void UnLoadVideoPlayer()
     {
         isVideoPlaying = false;
         PersistentSceneManager.UnloadScene(VideoUI);
+        onUnloadVideoPlayer();
     }
 }
