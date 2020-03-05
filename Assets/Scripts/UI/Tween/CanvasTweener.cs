@@ -7,6 +7,23 @@ using DG.Tweening;
 public class CanvasTweener : MonoBehaviour
 {
     public Canvas Canvas;
+
+    [Header("Left")]
+    [Range(-100f, 100f)]
+    public float LeftJumpPower = -20f;
+    [Range(0f, 4f)]
+    public float LeftJumpDuration = 0.08f;
+    [Range(0f, 4f)]
+    public float LeftFadeDuration = 0.08f;
+
+    [Header("Right")]
+    [Range(-100f, 100f)]
+    public float RightJumpPower = -20f;
+    [Range(0f, 4f)]
+    public float RightJumpDuration = 0.08f;
+    [Range(0f, 4f)]
+    public float RightFadeDuration = 0.08f;
+
     UIMainTopic uiMainTopic;
     Sequence cardSequence;
 
@@ -14,21 +31,21 @@ public class CanvasTweener : MonoBehaviour
     {
         uiMainTopic = Canvas.GetComponent<UIMainTopic>();
         uiMainTopic.onInstancedSubTopics += PlayCardSequence;
-        if (uiMainTopic.PlayStartAnimation) uiMainTopic.onInstancedTopics += RightSequence;
+        if (uiMainTopic.PlayStartAnimation) uiMainTopic.onInstancedTopics += LeftSequence;
 
         uiMainTopic.onLoadVideoPlayer += delegate() { HideUI(); };
         uiMainTopic.onUnloadVideoPlayer += delegate () { UnHideUI(); };
 
     }
 
-    public void RightSequence()
+    public void LeftSequence()
     {
         Sequence sequence = DOTween.Sequence();
         for (int i = 0; i < uiMainTopic.TopicButtons.Count; i++)
         {
-            sequence.Append(Jump(uiMainTopic.TopicButtons[i], -20, 0.08f));
+            sequence.Append(Jump(uiMainTopic.TopicButtons[i], -20, LeftJumpDuration, LeftFadeDuration));
         }
-        sequence.onComplete += LeftSequence;
+        sequence.onComplete += RightSequence;
         sequence.onComplete += delegate ()
         {
             
@@ -36,12 +53,12 @@ public class CanvasTweener : MonoBehaviour
         };
     }
 
-    public void LeftSequence()
+    public void RightSequence()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(Jump(uiMainTopic.UIContentGroup.Header.GetComponent<RectTransform>(), -20, 0.08f));
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.Header.GetComponent<RectTransform>(), -20, RightJumpDuration, RightFadeDuration));
         sequence.AppendInterval(0.08f);
-        sequence.Append(Jump(uiMainTopic.UIContentGroup.GetComponent<RectTransform>(), -20, 0.08f));
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.GetComponent<RectTransform>(), -20, RightJumpDuration, RightFadeDuration));
         sequence.onComplete += delegate ()
         {
             uiMainTopic.RaycastBlocker.SetActive(false);
@@ -68,14 +85,14 @@ public class CanvasTweener : MonoBehaviour
         CardsSequence();
     }
 
-    public Tween Jump(RectTransform rectTransform, float offset, float time = 0.1f)
+    public Tween Jump(RectTransform rectTransform, float offset, float time = 0.1f, float fadeTime = 0.1f)
     {
         Vector2 position = rectTransform.anchoredPosition;
 
         Tween tween = rectTransform.DOPunchAnchorPos(new Vector2(0, offset), time, 1, 1);
         tween.onPlay += delegate ()
         {
-            rectTransform.GetComponent<CanvasGroup>().DOFade(1, 0.3f);
+            rectTransform.GetComponent<CanvasGroup>().DOFade(1, fadeTime);
             
         };
         return tween;
