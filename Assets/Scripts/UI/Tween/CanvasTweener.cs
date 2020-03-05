@@ -9,7 +9,7 @@ public class CanvasTweener : MonoBehaviour
     public Canvas Canvas;
 
     [Header("Left")]
-    [Range(-100f, 100f)]
+    [Range(-1000f, 1000f)]
     public float LeftJumpPower = -20f;
     [Range(0f, 4f)]
     public float LeftJumpDuration = 0.08f;
@@ -17,7 +17,7 @@ public class CanvasTweener : MonoBehaviour
     public float LeftFadeDuration = 0.08f;
 
     [Header("Right")]
-    [Range(-100f, 100f)]
+    [Range(-1000f, 1000f)]
     public float RightJumpPower = -20f;
     [Range(0f, 4f)]
     public float RightJumpDuration = 0.08f;
@@ -43,7 +43,7 @@ public class CanvasTweener : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         for (int i = 0; i < uiMainTopic.TopicButtons.Count; i++)
         {
-            sequence.Append(Jump(uiMainTopic.TopicButtons[i], -20, LeftJumpDuration, LeftFadeDuration));
+            sequence.Append(Jump(uiMainTopic.TopicButtons[i], LeftJumpPower, LeftJumpDuration, LeftFadeDuration));
         }
         sequence.onComplete += RightSequence;
         sequence.onComplete += delegate ()
@@ -56,9 +56,9 @@ public class CanvasTweener : MonoBehaviour
     public void RightSequence()
     {
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(Jump(uiMainTopic.UIContentGroup.Header.GetComponent<RectTransform>(), -20, RightJumpDuration, RightFadeDuration));
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.Header.GetComponent<RectTransform>(), RightJumpPower, RightJumpDuration, RightFadeDuration));
         sequence.AppendInterval(0.08f);
-        sequence.Append(Jump(uiMainTopic.UIContentGroup.GetComponent<RectTransform>(), -20, RightJumpDuration, RightFadeDuration));
+        sequence.Append(Jump(uiMainTopic.UIContentGroup.GetComponent<RectTransform>(), RightJumpPower, RightJumpDuration, RightFadeDuration));
         sequence.onComplete += delegate ()
         {
             uiMainTopic.RaycastBlocker.SetActive(false);
