@@ -132,6 +132,7 @@ public class UIMainTopic : UIController
             GameObject instance = Instantiate(PrefabScrollCard, UICardsViewerGroup.ScrollRect.content.transform);
             UIScrollCard scrollCard = instance.GetComponent<UIScrollCard>();
             scrollCard.CardData = subTopicData.Cards[i];
+            scrollCard.image.sprite = subTopicData.Cards[i].FrontFace;
             scrollCard.uiMainTopic = this;
             ScrollCards.Add(instance);
         }

@@ -13,11 +13,6 @@ public class UIScrollCard : MonoBehaviour, IPointerClickHandler
     bool isBack;
     bool isSelected;
 
-    void OnEnable()
-    {
-        image.sprite = CardData.FrontFace;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         uiMainTopic.ActivateCardFace(CardData);
