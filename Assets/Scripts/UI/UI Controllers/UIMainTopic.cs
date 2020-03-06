@@ -33,7 +33,6 @@ public class UIMainTopic : UIController
 
     [Header("General Elements")]
     public GameObject RaycastBlocker;
-    public TextMeshProUGUI SelectedTopicText;
 
     [Header("Groups")]
     public UITopicButtonScrollView UITopicButtonScrollView;
@@ -60,7 +59,7 @@ public class UIMainTopic : UIController
     public override void Initialize()
     {
         base.Initialize();
-        SelectedTopicText.text = DefaultTopic.TopicName;
+        UIContentGroup.HeaderTextMeshProUGUI.text = DefaultTopic.TopicName;
         InstantiateGridCards(DefaultTopic);
         Canvas.worldCamera = Camera.main;
         InstantiateTopics();
@@ -86,7 +85,7 @@ public class UIMainTopic : UIController
 
     public void SetSelectedTopicText(DataTopic topicData)
     {
-        SelectedTopicText.text = topicData.TopicName;
+        UIContentGroup.HeaderTextMeshProUGUI.text = topicData.TopicName;
         UIBackgroundGroup.Background.sprite = topicData.Background;
 
         if (BackgroundFadeTween != null) BackgroundFadeTween.Kill();
