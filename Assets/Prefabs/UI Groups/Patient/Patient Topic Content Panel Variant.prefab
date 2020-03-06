@@ -115,7 +115,61 @@ PrefabInstance:
     - target: {fileID: 4257560403129062817, guid: 4a9b99a5da556004f95d139f15f1aea0,
         type: 3}
       propertyPath: m_Name
-      value: Topic Content Panel
+      value: Patient Topic Content Panel Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4257560403132207477, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fb6dbe190940fd74e9a2652d029c05b2,
+        type: 3}
+    - target: {fileID: 4257560403267700327, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb358d999aefedb45a252ce84cabb4c4,
+        type: 3}
+    - target: {fileID: 4257560403455644062, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 35aa9799e26b02e40a27aeee0531feaa,
+        type: 3}
+    - target: {fileID: 4257560403455644129, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9944358289eb15b448afd8f865a9f77d,
+        type: 3}
+    - target: {fileID: 4257560403493793198, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6805cb970007e3f489c419fab90b7762,
+        type: 3}
+    - target: {fileID: 4257560403493793201, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 394019141e9813049b749074d3b6a9a0,
+        type: 3}
+    - target: {fileID: 4257560403708682956, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09419ad1090ce22469b7859dea2cd843,
+        type: 3}
+    - target: {fileID: 4257560403798477129, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 41bfaae72c5283744b0c9e46da2ef49a,
+        type: 3}
+    - target: {fileID: 4257560404672120418, guid: 4a9b99a5da556004f95d139f15f1aea0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c8a1bd3a64b8da4c8d8661f0e798a35,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a9b99a5da556004f95d139f15f1aea0, type: 3}

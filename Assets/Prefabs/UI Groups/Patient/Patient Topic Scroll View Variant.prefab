@@ -7,10 +7,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4939151468887678264, guid: b289ed78c0d179e4184540630780e505,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 41bfaae72c5283744b0c9e46da2ef49a,
+        type: 3}
     - target: {fileID: 4939151469812225309, guid: b289ed78c0d179e4184540630780e505,
         type: 3}
       propertyPath: m_Name
-      value: Topic Scroll View
+      value: Patient Topic Scroll View Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4939151469812225310, guid: b289ed78c0d179e4184540630780e505,
         type: 3}
@@ -117,5 +123,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4939151470077268658, guid: b289ed78c0d179e4184540630780e505,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c8a1bd3a64b8da4c8d8661f0e798a35,
+        type: 3}
+    - target: {fileID: 4939151470096207973, guid: b289ed78c0d179e4184540630780e505,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 09419ad1090ce22469b7859dea2cd843,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b289ed78c0d179e4184540630780e505, type: 3}
