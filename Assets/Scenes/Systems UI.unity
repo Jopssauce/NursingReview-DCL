@@ -253,7 +253,6 @@ MonoBehaviour:
   PrefabScrollCard: {fileID: 2454063437752962175, guid: 5e1ab9931e69fae47be2b96bfd300c96,
     type: 3}
   RaycastBlocker: {fileID: 1925179688}
-  SelectedTopicText: {fileID: 1499321493}
   UITopicButtonScrollView: {fileID: 726465899}
   UIContentGroup: {fileID: 1833956995}
   UIBackgroundGroup: {fileID: 824379209}
@@ -429,18 +428,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c273bf8a092e734b9fa43f7364e7f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1499321493 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4257560403868186548, guid: 4a9b99a5da556004f95d139f15f1aea0,
-    type: 3}
-  m_PrefabInstance: {fileID: 4257560404551082785}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1833956993 stripped
