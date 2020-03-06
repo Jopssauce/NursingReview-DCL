@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler
+public class CardFace : MonoBehaviour, IPointerClickHandler
 {
     public DataCard CardData;
     public Image FrontFace;
@@ -13,7 +13,6 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public ScrollRect scrollRect;
 
     bool isBack;
-    bool isDragged;
 
     void OnEnable()
     {
@@ -25,46 +24,36 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(isDragged == false)SwitchFaces();
+        Debug.Log(isBack);
+        SwitchFaces();
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        isDragged = true;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        isDragged = false;
-    }
-
-    void SwitchFaces()
+    private void SwitchFaces()
     {
         if (isBack)
         {
-            BackFace.gameObject.SetActive(true);
-            Tween tween = BackFace.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
-            FrontFace.transform.DORotate(new Vector3(0, 180, 0), 0.3f);
-            BackFace.transform.localScale = FrontFace.transform.localScale;
-            scrollRect.content = BackFace.GetComponent<RectTransform>();
-
-            if (tween.position % 2 == 0)
-                FrontFace.gameObject.SetActive(false);
-            //FrontFace.sprite = CardData.FrontFace;
-            isBack = false;
+            SwitchFace(BackFace.gameObject, FrontFace.gameObject);
         }
         else
         {
-            FrontFace.gameObject.SetActive(true);
-            Tween tween = FrontFace.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
-            BackFace.transform.DORotate(new Vector3(0, -180, 0), 0.3f);
-            FrontFace.transform.localScale = BackFace.transform.localScale;
-            scrollRect.content = FrontFace.GetComponent<RectTransform>();
-
-            if (tween.position % 2 == 0)
-                BackFace.gameObject.SetActive(false);
-            //FrontFace.sprite = CardData.BackFace;
-            isBack = true;
+            SwitchFace(FrontFace.gameObject, BackFace.gameObject);
         }
+    }
+    
+    //Switches faceA with faceB
+    private void SwitchFace(GameObject faceA, GameObject faceB)
+    {
+        faceA.gameObject.SetActive(true);
+
+        Tween tween = faceA.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
+        faceB.transform.DORotate(new Vector3(0, 180, 0), 0.3f);
+        faceA.transform.localScale = faceB.transform.localScale;
+
+        scrollRect.content = faceA.GetComponent<RectTransform>();
+
+        if (tween.position % 2 == 0)
+            faceB.gameObject.SetActive(false);
+
+        isBack = !isBack;
     }
 }
