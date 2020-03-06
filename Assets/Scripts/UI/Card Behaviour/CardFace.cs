@@ -12,7 +12,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
     public Image BackFace;
     public ScrollRect scrollRect;
 
-    bool isBack;
+    bool isBack = true;
 
     void OnEnable()
     {
@@ -24,7 +24,6 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log(isBack);
         SwitchFaces();
     }
 
