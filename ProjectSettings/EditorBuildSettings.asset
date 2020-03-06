@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Persistent Scene.unity
     guid: e06268d5c4c615847bc02fb5bbf2f1ff
   - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: 1ae0462f75ce6a84394508febb064314
+  - enabled: 1
     path: Assets/Scenes/Topic UI.unity
     guid: ec2ad4f1cc8c71345bf6c912e2246a2a
   - enabled: 1
@@ -20,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Video Player UI.unity
     guid: fad3c9bb9f8cdbf46b1effac021e1803
-  - enabled: 1
-    path: Assets/Scenes/Card UI.unity
-    guid: 57fff7bd42bad7a4cbb19144504503d4
   m_configObjects: {}
