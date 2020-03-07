@@ -1526,6 +1526,7 @@ GameObject:
   - component: {fileID: 4257560404307189956}
   - component: {fileID: 4257560404307189957}
   - component: {fileID: 4257560404307189954}
+  - component: {fileID: 1915025106680492578}
   m_Layer: 5
   m_Name: Loading Radial
   m_TagString: Untagged
@@ -1607,6 +1608,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &1915025106680492578
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257560404307189952}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
 --- !u!1 &4257560404367176424
 GameObject:
   m_ObjectHideFlags: 0
