@@ -111,7 +111,7 @@ public class CanvasTweener : MonoBehaviour
     {
         uiMainTopic.UITopicButtonScrollView.ParentCanvasGroup.DOFade(1, time);
         uiMainTopic.UIContentGroup.ParentCanvasGroup.DOFade(1, time);
-        uiMainTopic.UIContentGroup.Header.GetComponent<CanvasGroup>().DOFade(0, time);
+        uiMainTopic.UIContentGroup.Header.GetComponent<CanvasGroup>().DOFade(1, time);
         uiMainTopic.UINavigationGroup.ParentCanvasGroup.DOFade(1, time);
         uiMainTopic.UICardsViewerGroup.ParentCanvasGroup.DOFade(1, time);
     }
