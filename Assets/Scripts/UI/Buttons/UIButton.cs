@@ -5,10 +5,10 @@ using UnityEngine.UI;
 public class UIButton : MonoBehaviour
 {
     protected PersistentSceneManager PersistentSceneManager;
-    protected Button button;
+    public Button button { get; private set; }
     protected Canvas Canvas;
 
-    public virtual void Start()
+    public virtual void Awake()
     {
         Initialize();
     }

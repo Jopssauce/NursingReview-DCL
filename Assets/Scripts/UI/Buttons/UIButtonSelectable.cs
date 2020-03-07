@@ -23,11 +23,10 @@ public class UIButtonSelectable : UIButton, IPointerEnterHandler, IPointerExitHa
 
     bool isSelected = false;
 
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
         uiMainTopic = GetComponentInParent<UIMainTopic>();
-        button.onClick.AddListener(OnClick);
     }
 
     void OnEnable()
@@ -35,43 +34,28 @@ public class UIButtonSelectable : UIButton, IPointerEnterHandler, IPointerExitHa
         image = GetComponent<Image>();
     }
 
-    void OnClick()
-    {
-        uiMainTopic.SetSelectedTopicText(TopicData);
-
-        //Selected
-        if (uiMainTopic.currentTopicButton != this)
-        {
-            //Deselect Old Button
-            if(uiMainTopic.currentTopicButton != null) uiMainTopic.currentTopicButton.DeselectAction();
-            //Select this button as new
-            SelectAction();
-            uiMainTopic.currentTopicButton = this;
-        }
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (isSelected == false) TextMeshProUGUI.color = Highlighted;
+        if (isSelected == false && TextMeshProUGUI != null) TextMeshProUGUI.color = Highlighted;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (isSelected == false)TextMeshProUGUI.color = Default;
+        if (isSelected == false && TextMeshProUGUI != null) TextMeshProUGUI.color = Default;
     }
 
-    void SelectAction()
+    public void SelectAction()
     {
-        TextMeshProUGUI.color = Highlighted;
+        if (TextMeshProUGUI != null) TextMeshProUGUI.color = Highlighted;
         isSelected = true;
         image.sprite = SpriteHighlighted;
         image.fillAmount = 0;
         image.DOFillAmount(1, 0.7f);
     }
 
-    void DeselectAction()
+    public void DeselectAction()
     {
-        TextMeshProUGUI.color = Default;
+        if (TextMeshProUGUI != null) TextMeshProUGUI.color = Default;
         isSelected = false;
         image.sprite = SpriteDefault;
         image.fillAmount = 1;

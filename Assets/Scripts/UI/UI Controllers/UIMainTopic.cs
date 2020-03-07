@@ -17,6 +17,7 @@ public delegate void OnUnloadVideoPlayer();
 public class UIMainTopic : UIController
 {
     public UIButtonSelectable currentTopicButton;
+    public UIButtonSelectable currentTab;
     public DataTopic DefaultTopic; 
 
     [Header("Animation Settings")]
@@ -63,6 +64,8 @@ public class UIMainTopic : UIController
         InstantiateGridCards(DefaultTopic);
         Canvas.worldCamera = Camera.main;
         InstantiateTopics();
+        InitializeTabButtons();
+
         onInitialize?.Invoke();
     }
 
@@ -80,6 +83,32 @@ public class UIMainTopic : UIController
         if (Input.GetKeyDown(KeyCode.Backspace) && isVideoPlaying == false)
         {
             PersistentSceneManager.ReplaceActiveScene("Topic UI");
+        }
+    }
+
+    void InitializeTabButtons()
+    {
+        SelectButton(UIContentGroup.VideoButton.GetComponent<UIButtonSelectable>(), ref currentTab);
+        UIContentGroup.CardButton.GetComponent<Button>().onClick.AddListener(delegate ()
+        {
+            SelectButton(UIContentGroup.CardButton.GetComponent<UIButtonSelectable>(), ref currentTab);
+        });
+
+        UIContentGroup.VideoButton.GetComponent<Button>().onClick.AddListener(delegate ()
+        {
+            SelectButton(UIContentGroup.VideoButton.GetComponent<UIButtonSelectable>(), ref currentTab);
+        });
+    }
+
+    public void SelectButton(UIButtonSelectable selectedButton, ref UIButtonSelectable currentSelectedButton)
+    {
+        if (selectedButton != currentSelectedButton)
+        {
+            //Deselect Old Button
+            if (currentSelectedButton != null) currentSelectedButton.DeselectAction();
+            //Select this button as new
+            selectedButton.SelectAction();
+            currentSelectedButton = selectedButton;
         }
     }
 
@@ -125,6 +154,14 @@ public class UIMainTopic : UIController
             button = instance.GetComponent<UIButtonSelectable>();
             button.TopicData = Topics[i];
             button.TextMeshProUGUI.text = Topics[i].TopicName;
+
+            //TODO REFACTOR THIS DIRTY DELEGATE
+            button.button.onClick.AddListener(delegate ()
+            {
+                SelectButton(button, ref currentTopicButton);
+                SetSelectedTopicText(button.TopicData);
+            });
+
             instance.GetComponent<CanvasGroup>().alpha = 0;
         }
         LayoutRebuilder.ForceRebuildLayoutImmediate(UITopicButtonScrollView.ScrollRect.content);
