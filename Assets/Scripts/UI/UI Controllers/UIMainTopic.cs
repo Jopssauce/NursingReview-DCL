@@ -16,7 +16,7 @@ public delegate void OnUnloadVideoPlayer();
 
 public class UIMainTopic : UIController
 {
-    public ButtonMainTopic currentTopicButton;
+    public UIButtonSelectable currentTopicButton;
     public DataTopic DefaultTopic; 
 
     [Header("Animation Settings")]
@@ -119,10 +119,10 @@ public class UIMainTopic : UIController
     {
         for (int i = 0; i < Topics.Count; i++)
         {
-            ButtonMainTopic button;
+            UIButtonSelectable button;
             GameObject instance = Instantiate(MainTopicButton, UITopicButtonScrollView.ScrollRect.content.transform);
             TopicButtons.Add(instance.GetComponent<RectTransform>());
-            button = instance.GetComponent<ButtonMainTopic>();
+            button = instance.GetComponent<UIButtonSelectable>();
             button.TopicData = Topics[i];
             button.TextMeshProUGUI.text = Topics[i].TopicName;
             instance.GetComponent<CanvasGroup>().alpha = 0;

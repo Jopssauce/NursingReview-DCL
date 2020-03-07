@@ -7,7 +7,7 @@ using TMPro;
 using DG.Tweening;
 
 [RequireComponent(typeof(Button))]
-public class ButtonMainTopic : UIButton, IPointerEnterHandler, IPointerExitHandler
+public class UIButtonSelectable : UIButton, IPointerEnterHandler, IPointerExitHandler
 {
     public DataTopic TopicData;
     public TextMeshProUGUI TextMeshProUGUI;
