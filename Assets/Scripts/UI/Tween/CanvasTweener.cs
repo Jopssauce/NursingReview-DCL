@@ -33,8 +33,8 @@ public class CanvasTweener : MonoBehaviour
         uiMainTopic.onInstancedSubTopics += PlayCardSequence;
         if (uiMainTopic.PlayStartAnimation) uiMainTopic.onInstancedTopics += LeftSequence;
 
-        uiMainTopic.onLoadVideoPlayer += delegate() { HideUI(); };
-        uiMainTopic.onUnloadVideoPlayer += delegate () { UnHideUI(); };
+        uiMainTopic.onLoadVideoPlayer += delegate() { HideUI(1f); };
+        uiMainTopic.onUnloadVideoPlayer += delegate () { UnHideUI(1f); };
 
     }
 
@@ -102,6 +102,7 @@ public class CanvasTweener : MonoBehaviour
     {
         uiMainTopic.UITopicButtonScrollView.ParentCanvasGroup.DOFade(0, time);
         uiMainTopic.UIContentGroup.ParentCanvasGroup.DOFade(0, time);
+        uiMainTopic.UIContentGroup.Header.GetComponent<CanvasGroup>().DOFade(0, time);
         uiMainTopic.UINavigationGroup.ParentCanvasGroup.DOFade(0, time);
         uiMainTopic.UICardsViewerGroup.ParentCanvasGroup.DOFade(0, time);
     }
@@ -110,6 +111,7 @@ public class CanvasTweener : MonoBehaviour
     {
         uiMainTopic.UITopicButtonScrollView.ParentCanvasGroup.DOFade(1, time);
         uiMainTopic.UIContentGroup.ParentCanvasGroup.DOFade(1, time);
+        uiMainTopic.UIContentGroup.Header.GetComponent<CanvasGroup>().DOFade(0, time);
         uiMainTopic.UINavigationGroup.ParentCanvasGroup.DOFade(1, time);
         uiMainTopic.UICardsViewerGroup.ParentCanvasGroup.DOFade(1, time);
     }
