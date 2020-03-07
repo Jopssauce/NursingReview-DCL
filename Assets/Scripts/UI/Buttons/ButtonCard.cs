@@ -8,9 +8,9 @@ public class ButtonCard : UIButton
     public DataSubTopic SubTopicData;
     public UISubTopicMask UISubTopicMask;
     UIMainTopic uiMainTopic;
-    public override void Start()
+    public override void Awake()
     {
-        base.Start();
+        base.Awake();
     }
     //OnEnable because object starts off as enabled
     private void OnEnable()
