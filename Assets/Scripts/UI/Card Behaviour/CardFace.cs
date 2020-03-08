@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class CardFace : MonoBehaviour, IPointerClickHandler
+public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler
 {
     public DataCard CardData;
     public Image FrontFace;
@@ -13,6 +13,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
     public ScrollRect scrollRect;
 
     bool isBack = true;
+    bool isDrag;
 
     void OnEnable()
     {
@@ -24,7 +25,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SwitchFaces();
+        if(isDrag == false) SwitchFaces();
     }
 
     private void SwitchFaces()
@@ -54,5 +55,15 @@ public class CardFace : MonoBehaviour, IPointerClickHandler
             faceB.gameObject.SetActive(false);
 
         isBack = !isBack;
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        isDrag = true;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        isDrag = false;
     }
 }
