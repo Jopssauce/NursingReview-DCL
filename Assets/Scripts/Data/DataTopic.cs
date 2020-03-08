@@ -6,6 +6,7 @@ using UnityEngine;
 public class DataTopic : ScriptableObject
 {
     public string TopicName;
+    public string VideoUrl;
     public Sprite Background;
     public List<DataSubTopic> SubTopics;
 }
