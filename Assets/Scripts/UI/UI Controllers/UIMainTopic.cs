@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using DG.Tweening;
 
 public delegate void OnInitialize();
@@ -110,6 +111,31 @@ public class UIMainTopic : UIController
             //Select this button as new
             selectedButton.SelectAction();
             currentSelectedButton = selectedButton;
+        }
+    }
+
+    //TODO Refactor this into individual back buttons instead of just having one button
+    public void BackButton()
+    {
+        //Set to null to clear current selected button in Event System
+        EventSystem.current.SetSelectedGameObject(null);
+
+        if (isVideoPlaying == true)
+        {
+            UnLoadVideoPlayer();
+            UIContentGroup.VideoPanel.GetComponent<VideoPanel>().UnZoom();
+        }
+        else if (isVideoPlaying == false && UICardsViewerGroup.ScrollRect.gameObject.activeSelf)
+        {
+            CloseHorizontalCardScroller();
+        }
+        else if (isVideoPlaying == false && UICardsViewerGroup.CardFace.gameObject.activeSelf)
+        {
+            UICardsViewerGroup.CardFace.gameObject.SetActive(false);
+        }
+        else if (isVideoPlaying == false)
+        {
+            PersistentSceneManager.ReplaceActiveScene("Topic UI");
         }
     }
 
