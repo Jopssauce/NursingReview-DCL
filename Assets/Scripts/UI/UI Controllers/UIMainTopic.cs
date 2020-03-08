@@ -125,13 +125,13 @@ public class UIMainTopic : UIController
             UnLoadVideoPlayer();
             UIContentGroup.VideoPanel.GetComponent<VideoPanel>().UnZoom();
         }
-        else if (isVideoPlaying == false && UICardsViewerGroup.ScrollRect.gameObject.activeSelf)
-        {
-            CloseHorizontalCardScroller();
-        }
         else if (isVideoPlaying == false && UICardsViewerGroup.CardFace.gameObject.activeSelf)
         {
             UICardsViewerGroup.CardFace.gameObject.SetActive(false);
+        }
+        else if (isVideoPlaying == false && UICardsViewerGroup.ScrollRect.gameObject.activeSelf)
+        {
+            CloseHorizontalCardScroller();
         }
         else if (isVideoPlaying == false)
         {
