@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 10_OB-GYN
   m_EditorClassIdentifier: 
   TopicName: OB-GYN
+  VideoUrl: https://www.youtube.com/watch?v=GXI0l3yqBrA
   Background: {fileID: 21300000, guid: 2610557fa95d3f34aa69582cdbdf12dd, type: 3}
   SubTopics:
   - {fileID: 11400000, guid: 0df1031ef8595854191e39bbead44b7a, type: 2}
