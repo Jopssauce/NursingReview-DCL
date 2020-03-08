@@ -7,10 +7,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 462403925315325586, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 462403925315325586, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 462403925315325586, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 462403925315325586, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.45490196
+      objectReference: {fileID: 0}
     - target: {fileID: 1277507127285016610, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
         type: 3}
       propertyPath: m_Name
-      value: Cards Viewer
+      value: Patient Cards Viewer Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1277507127285016611, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
         type: 3}
@@ -116,6 +136,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277507128087600666, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277507128087600666, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7075472
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277507128087600666, guid: 2a6e3a97375c30a4cadcdccac5ebcc76,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7075472
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a6e3a97375c30a4cadcdccac5ebcc76, type: 3}
