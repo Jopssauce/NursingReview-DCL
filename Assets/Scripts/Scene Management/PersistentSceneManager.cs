@@ -57,6 +57,7 @@ public class PersistentSceneManager : MonoBehaviour
 
     public void ReplaceActiveScene(string sceneToLoad)
     {
+        if (unloadOperation != null) return;
         LoadSceneAdditive(sceneToLoad);
         this.sceneToLoad = sceneToLoad;
         unloadOperation = UnloadScene(SceneManager.GetActiveScene().name);
@@ -73,6 +74,7 @@ public class PersistentSceneManager : MonoBehaviour
     private void SetActiveOperation(AsyncOperation obj)
     {
         SetActive(sceneToLoad);
-        obj.completed -= SetActiveOperation;
+        unloadOperation.completed -= SetActiveOperation;
+        unloadOperation = null;
     }
 }
