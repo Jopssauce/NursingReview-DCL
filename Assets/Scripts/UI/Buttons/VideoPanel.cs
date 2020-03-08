@@ -38,6 +38,6 @@ public class VideoPanel : MonoBehaviour, IPointerClickHandler
     //Makes use of animation event in video panel
     public void LoadVideoPlayer()
     {
-        uiMainTopic.LoadVideoPlayer();
+        uiMainTopic.LoadVideoPlayerAsync();
     }
 }

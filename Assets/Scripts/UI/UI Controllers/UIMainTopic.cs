@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using System.Threading.Tasks;
-using TMPro;
 using DG.Tweening;
 
 public delegate void OnInitialize();
@@ -12,13 +8,15 @@ public delegate void OnInstancedSubTopics();
 public delegate void OnInstancedTopics();
 public delegate void OnLoadVideoPlayer();
 public delegate void OnUnloadVideoPlayer();
+public delegate void OnActiveVideoPlayer();
 
 
 public class UIMainTopic : UIController
 {
     public UIButtonSelectable currentTopicButton;
     public UIButtonSelectable currentTab;
-    public DataTopic DefaultTopic; 
+    public DataTopic DefaultTopic;
+    DataTopic currentTopic;
 
     [Header("Animation Settings")]
     public bool PlayStartAnimation = true;
@@ -26,6 +24,7 @@ public class UIMainTopic : UIController
     [Header("Video")]
     public string VideoUI;
     public RenderTexture VideoTexture;
+    public YoutubePlayer.YoutubePlayer YoutubePlayer;
 
     [Header("Prefabs")]
     public GameObject MainTopicButton;
@@ -47,6 +46,7 @@ public class UIMainTopic : UIController
     public event OnInstancedTopics onInstancedTopics;
     public event OnLoadVideoPlayer onLoadVideoPlayer;
     public event OnUnloadVideoPlayer onUnloadVideoPlayer;
+    public event OnActiveVideoPlayer onActiveVideoPlayer;
 
     [Header("Lists")]
     public List<DataTopic> Topics;
@@ -63,6 +63,7 @@ public class UIMainTopic : UIController
         UIContentGroup.HeaderTextMeshProUGUI.text = DefaultTopic.TopicName;
         InstantiateGridCards(DefaultTopic);
         Canvas.worldCamera = Camera.main;
+        currentTopic = DefaultTopic;
         InstantiateTopics();
         InitializeTabButtons();
 
@@ -114,6 +115,7 @@ public class UIMainTopic : UIController
 
     public void SetSelectedTopicText(DataTopic topicData)
     {
+        currentTopic = topicData;
         UIContentGroup.HeaderTextMeshProUGUI.text = topicData.TopicName;
         UIBackgroundGroup.Background.sprite = topicData.Background;
 
@@ -210,18 +212,31 @@ public class UIMainTopic : UIController
         list.Clear();
     }
 
-    public void LoadVideoPlayer()
+    public async void LoadVideoPlayerAsync()
     {
         VideoTexture.Release();
         isVideoPlaying = true;
-        PersistentSceneManager.LoadActiveAdditive(VideoUI);
-        onLoadVideoPlayer();
+        if (string.IsNullOrEmpty(currentTopic.VideoUrl))
+        {
+            Debug.Log("No Video url");
+            return;
+        }
+        YoutubePlayer.youtubeUrl = currentTopic.VideoUrl;
+
+        YoutubePlayer.gameObject.SetActive(true);
+        onActiveVideoPlayer?.Invoke();
+        //Need to change screen space because of audiosampler error
+        Canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        await YoutubePlayer.PlayVideoAsync();
+        onLoadVideoPlayer?.Invoke();
     }
 
     public void UnLoadVideoPlayer()
     {
         isVideoPlaying = false;
-        PersistentSceneManager.UnloadScene(VideoUI);
+        YoutubePlayer.GetComponent<UnityEngine.Video.VideoPlayer>().Stop();
+        YoutubePlayer.gameObject.SetActive(false);
         onUnloadVideoPlayer();
+        Canvas.renderMode = RenderMode.ScreenSpaceCamera;
     }
 }

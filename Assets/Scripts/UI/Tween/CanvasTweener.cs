@@ -33,7 +33,7 @@ public class CanvasTweener : MonoBehaviour
         uiMainTopic.onInstancedSubTopics += PlayCardSequence;
         if (uiMainTopic.PlayStartAnimation) uiMainTopic.onInstancedTopics += LeftSequence;
 
-        uiMainTopic.onLoadVideoPlayer += delegate() { HideUI(1f); };
+        uiMainTopic.onActiveVideoPlayer += delegate() { HideUI(1f); };
         uiMainTopic.onUnloadVideoPlayer += delegate () { UnHideUI(1f); };
 
     }
