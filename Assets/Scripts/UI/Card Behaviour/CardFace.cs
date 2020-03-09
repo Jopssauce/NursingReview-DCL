@@ -82,17 +82,31 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        DoubleClick();
-        if (clickRoutine != null)
-        {
-            StopCoroutine(clickRoutine);
-            clickRoutine = null;
-        }
+        //DoubleClick();
+        //if (clickRoutine != null)
+        //{
+        //    StopCoroutine(clickRoutine);
+        //    clickRoutine = null;
+        //}
         if(isDrag == false)
         {
-            if(clickRoutine == null)
+            if (eventData.button == PointerEventData.InputButton.Left)
             {
-                clickRoutine = StartCoroutine(DetectClick());
+                if (DoubleClick() == true)
+                {
+                    if (isZoomed)
+                    {
+                        UnZoomFace(currentFace);
+                    }
+                    else
+                    {
+                        ZoomFace(currentFace);
+                    }
+                }
+            }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                SwitchFaces();
             }
         }
     }
