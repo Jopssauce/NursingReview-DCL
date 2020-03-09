@@ -16,8 +16,12 @@ public class UITopic : UIController
     public Button systems;
     public Button patients;
 
+    bool isInitialAnimationDone;
+    bool isTransitioning;
+
     public void TransitionScreen(string screen)
     {
+        isTransitioning = true;
         Sequence sequence = DOTween.Sequence();
         Jump(button1, 50);
         Jump(button2, 50);
@@ -40,7 +44,7 @@ public class UITopic : UIController
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isTransitioning)
         {
             LoadActiveScene("Title Screen");
         }
