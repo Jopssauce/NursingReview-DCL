@@ -74,7 +74,11 @@ public class PersistentSceneManager : MonoBehaviour
     private void SetActiveOperation(AsyncOperation obj)
     {
         SetActive(sceneToLoad);
-        unloadOperation.completed -= SetActiveOperation;
-        unloadOperation = null;
+        if(unloadOperation != null)
+        {
+            unloadOperation.completed -= SetActiveOperation;
+            unloadOperation = null;
+        }
+        
     }
 }
