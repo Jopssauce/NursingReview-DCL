@@ -71,23 +71,6 @@ public class UIMainTopic : UIController
         onInitialize?.Invoke();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == true)
-        {
-            UnLoadVideoPlayer();
-            UIContentGroup.VideoPanel.GetComponent<VideoPanel>().UnZoom();
-        }
-        if (Input.GetKeyDown(KeyCode.Escape) && isVideoPlaying == false)
-        {
-            CloseHorizontalCardScroller();
-        }
-        if (Input.GetKeyDown(KeyCode.Backspace) && isVideoPlaying == false)
-        {
-            PersistentSceneManager.ReplaceActiveScene("Topic UI");
-        }
-    }
-
     void InitializeTabButtons()
     {
         SelectButton(UIContentGroup.VideoButton.GetComponent<UIButtonSelectable>(), ref currentTab);
