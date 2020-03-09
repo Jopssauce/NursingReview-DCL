@@ -38,6 +38,14 @@ public class UITopic : UIController
         Canvas.worldCamera = Camera.main;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoadActiveScene("Title Screen");
+        }
+    }
+
     public Tween Jump(RectTransform rectTransform, float offset)
     {
         Vector2 position = rectTransform.anchoredPosition;

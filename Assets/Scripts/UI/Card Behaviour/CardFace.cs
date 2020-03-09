@@ -30,7 +30,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     private float _minCurrentTime;
     private float _maxCurrentTime;
 
-    Coroutine clickRoutine;
+    Coroutine clickRoutine = null;
 
     public bool DoubleClick()
     {

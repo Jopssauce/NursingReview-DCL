@@ -71,6 +71,14 @@ public class UIMainTopic : UIController
         onInitialize?.Invoke();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && RaycastBlocker.activeSelf == false)
+        {
+            BackButton();
+        }
+    }
+
     void InitializeTabButtons()
     {
         SelectButton(UIContentGroup.VideoButton.GetComponent<UIButtonSelectable>(), ref currentTab);
