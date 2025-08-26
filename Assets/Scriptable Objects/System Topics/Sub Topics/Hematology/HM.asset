@@ -15,4 +15,11 @@ MonoBehaviour:
   UISprite: {fileID: 0}
   Mask: {fileID: 0}
   Name: 
-  Cards: []
+  Cards:
+  - {fileID: 11400000, guid: ed68a1233e0874244b433a2414899a76, type: 2}
+  - {fileID: 11400000, guid: ccabe3bb1e7031c4d9851ae3c99294a9, type: 2}
+  - {fileID: 11400000, guid: a7ef940dcb1b09d4bb54f77a5d9575c6, type: 2}
+  - {fileID: 11400000, guid: 364627d524d134e40b10861a11ebcedc, type: 2}
+  - {fileID: 11400000, guid: c26c38ac6b174ce42afe27dd1b172b4d, type: 2}
+  - {fileID: 11400000, guid: 99a2d6f2fcbab004d95c1e6d217ecf9c, type: 2}
+  - {fileID: 11400000, guid: 147d3fd292bf6c34488ceaf40ef34119, type: 2}

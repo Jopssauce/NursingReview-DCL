@@ -14,7 +14,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     GameObject currentFace;
 
-    bool isBack = true;
+    bool isBack;
     bool isDrag;
     bool isZoomed;
 
@@ -31,6 +31,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     private float _maxCurrentTime;
 
     Coroutine clickRoutine = null;
+    Tween switchTween;
 
     public bool DoubleClick()
     {
@@ -74,6 +75,14 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         FrontFace.sprite = CardData.FrontFace;
         BackFace.sprite = CardData.BackFace;
+        if(CardData.BackFace == null)
+        {
+            BackFace.GetComponent<Image>().enabled = false;
+        }
+        else
+        {
+            BackFace.GetComponent<Image>().enabled = true;
+        }    
         FrontFace.transform.localScale = Vector3.one;
         currentFace = FrontFace.gameObject;
         initialScale = currentFace.transform.localScale;
@@ -113,6 +122,8 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     private void SwitchFaces()
     {
+        if (switchTween != null && switchTween.IsActive()) return;
+
         if (isBack)
         {
             SwitchFace(BackFace.gameObject, FrontFace.gameObject);
@@ -129,14 +140,14 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         currentFace = faceA.gameObject;
         faceA.gameObject.SetActive(true);
 
-        Tween tween = faceA.transform.DORotate(new Vector3(0, 0, 0), 0.3f);
-        faceB.transform.DORotate(new Vector3(0, 180, 0), 0.3f);
+        float duration = 1.3f;
+        switchTween = faceA.transform.DORotate(new Vector3(0, 180-12, 0), duration);
+        faceB.transform.DORotate(new Vector3(0,  -12, 0), duration);
         faceA.transform.localScale = faceB.transform.localScale;
+        //scrollRect.content = faceA.GetComponent<RectTransform>();
 
-        scrollRect.content = faceA.GetComponent<RectTransform>();
-
-        if (tween.position % 2 == 0)
-            faceB.gameObject.SetActive(false);
+        //if (tween.position % 2 == 0)
+        //   faceB.gameObject.SetActive(false);
 
         isBack = !isBack;
     }
