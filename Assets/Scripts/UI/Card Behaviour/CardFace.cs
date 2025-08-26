@@ -155,7 +155,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public void ZoomFace(GameObject current)
     {
         isZoomed = true;
-        current.transform.DOScale(2, 0.3f);
+        current.transform.DOScale(1.15f, 0.3f);
     }
     
     public void UnZoomFace(GameObject current)

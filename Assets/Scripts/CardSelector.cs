@@ -30,27 +30,26 @@ public class CardSelector : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
+            ToggleInteractables(false);
+            ToggleAnimCards(true);
+            animator.Play("Next");
+
             if (currentIndex + 2 < SubTopics.Cards.Count)
-            {
-                ToggleInteractables(false);
-                ToggleAnimCards(true);
-                animator.Play("Next");
                 Cards[2].sprite = SubTopics.Cards[currentIndex + 2].FrontFace;
-            }
             else
-            {
-                // Play LastNext animation
-            }
+                Cards[2].color = Color.clear;
         }
     }
 
     public void OnNextFinished()
     {
-        if(currentIndex > SubTopics.Cards.Count)
+        currentIndex++;
+        if (currentIndex >= SubTopics.Cards.Count - 1)
         {
+            currentIndex = SubTopics.Cards.Count - 1;
+            Cards[0].sprite = SubTopics.Cards[currentIndex].FrontFace;
             return;
         }
-        currentIndex++;
 
         Cards[0].sprite = SubTopics.Cards[currentIndex].FrontFace;
         Cards[1].sprite = SubTopics.Cards[currentIndex+1].FrontFace;
