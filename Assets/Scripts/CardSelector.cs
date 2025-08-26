@@ -30,9 +30,11 @@ public class CardSelector : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
+            CardFaces[0].ResetCard();
             ToggleInteractables(false);
-            ToggleAnimCards(true);
+            ToggleAnimCards(true);       
             animator.Play("Next");
+            
 
             if (currentIndex + 2 < SubTopics.Cards.Count)
                 Cards[2].sprite = SubTopics.Cards[currentIndex + 2].FrontFace;
@@ -44,12 +46,17 @@ public class CardSelector : MonoBehaviour
     public void OnNextFinished()
     {
         currentIndex++;
+        // Last Card
         if (currentIndex >= SubTopics.Cards.Count - 1)
         {
             currentIndex = SubTopics.Cards.Count - 1;
             Cards[0].sprite = SubTopics.Cards[currentIndex].FrontFace;
+            CardFaces[0].CardData = SubTopics.Cards[currentIndex];
+            ToggleInteractables(true);
+            ToggleAnimCards(false);
             return;
         }
+        
 
         Cards[0].sprite = SubTopics.Cards[currentIndex].FrontFace;
         Cards[1].sprite = SubTopics.Cards[currentIndex+1].FrontFace;

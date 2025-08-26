@@ -13,63 +13,26 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public ScrollRect scrollRect;
 
     GameObject currentFace;
+    GameObject lastFace;
 
-    bool isBack;
+    public bool isBack {  get; private set; }
     bool isDrag;
     bool isZoomed;
 
     Vector3 initialScale;
 
     //properties
+    public float referenceAngle = 12;
     public float MaxTimeToClick = 0.60f;
     public float MinTimeToClick = 0.05f;
     public bool IsDebug = false;
     public bool isDoubleClicked;
 
     //private variables to keep track
-    private float _minCurrentTime;
-    private float _maxCurrentTime;
-
-    Coroutine clickRoutine = null;
+    private float lastClickTime;
+    public float doubleClickThreshold = 0.3f; // Time in seconds
     Tween switchTween;
 
-    public bool DoubleClick()
-    {
-        if (Time.time >= _minCurrentTime && Time.time <= _maxCurrentTime)
-        {
-            if (IsDebug)
-                Debug.Log("Double Click");
-            _minCurrentTime = 0;
-            _maxCurrentTime = 0;
-            isDoubleClicked = true;
-            return true;
-        }
-        _minCurrentTime = Time.time + MinTimeToClick; _maxCurrentTime = Time.time + MaxTimeToClick;
-        isDoubleClicked = false;
-        return false;
-    }
-
-    IEnumerator DetectClick()
-    {
-        yield return new WaitForSeconds(0.2f);
-        if (isDoubleClicked == false)
-        {
-            SwitchFaces();
-        }
-        else
-        {
-            if (isZoomed)
-            {
-                UnZoomFace(currentFace);
-            }
-            else
-            {
-                ZoomFace(currentFace);
-            }
-            StopCoroutine(clickRoutine);
-            yield break;
-        }
-    }
 
     void OnEnable()
     {
@@ -91,25 +54,23 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //DoubleClick();
-        //if (clickRoutine != null)
-        //{
-        //    StopCoroutine(clickRoutine);
-        //    clickRoutine = null;
-        //}
-        if(isDrag == false)
-        {
+        float timeSinceLastClick = Time.time - lastClickTime;
+
+        if (isDrag == false)
+        {         
             if (eventData.button == PointerEventData.InputButton.Left)
             {
-                if (DoubleClick() == true)
+                if (timeSinceLastClick <= doubleClickThreshold)
                 {
                     if (isZoomed)
                     {
-                        UnZoomFace(currentFace);
+                        isZoomed = false;
+                        ZoomFace(1f);
                     }
                     else
                     {
-                        ZoomFace(currentFace);
+                        isZoomed = true;
+                        ZoomFace(2f);
                     }
                 }
             }
@@ -118,6 +79,8 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
                 SwitchFaces();
             }
         }
+    
+        lastClickTime = Time.time;
     }
 
     private void SwitchFaces()
@@ -138,11 +101,12 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     private void SwitchFace(GameObject faceA, GameObject faceB)
     {
         currentFace = faceA.gameObject;
+        lastFace = faceB.gameObject;
         faceA.gameObject.SetActive(true);
 
         float duration = 1.3f;
-        switchTween = faceA.transform.DORotate(new Vector3(0, 180-12, 0), duration);
-        faceB.transform.DORotate(new Vector3(0,  -12, 0), duration);
+        switchTween = faceA.transform.DORotate(new Vector3(0, 180 - referenceAngle, 0), duration);
+        faceB.transform.DORotate(new Vector3(0,  -referenceAngle, 0), duration);
         faceA.transform.localScale = faceB.transform.localScale;
         //scrollRect.content = faceA.GetComponent<RectTransform>();
 
@@ -152,16 +116,20 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         isBack = !isBack;
     }
 
-    public void ZoomFace(GameObject current)
+    public void ZoomFace(float zoom, float dur = 0.3f)
     {
-        isZoomed = true;
-        current.transform.DOScale(1.15f, 0.3f);
+        FrontFace.transform.DOScale(zoom, dur);
+        BackFace.transform.DOScale(zoom, dur);
     }
-    
-    public void UnZoomFace(GameObject current)
+
+    public void ResetCard()
     {
+        FrontFace.transform.localEulerAngles = new Vector3(0, -referenceAngle, 0);
+        BackFace.transform.localEulerAngles = new Vector3(0, 180 - referenceAngle, 0);
+        FrontFace.transform.localScale = new Vector3(1, 1, 1);
+        BackFace.transform.localScale = new Vector3(1, 1, 1);
+        isBack = false;
         isZoomed = false;
-        current.transform.DOScale(1, 0.3f);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
