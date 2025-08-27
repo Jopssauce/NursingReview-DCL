@@ -21,6 +21,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     private Vector3 faceAOriginalRotation;
     private Vector3 faceBOriginalRotation;
     private Vector3 originalScale;
+    private Vector2 originalSizeDelta;
     private Vector2 dragOffset;
     private Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
@@ -41,6 +42,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     public bool IsDebug = false;
     public bool isDoubleClicked;
     public bool isInteractable = false;
+    public float centerSizeDeltaOffset = 10f;
 
     //Events
     public Action OnBeginCenter;
@@ -60,6 +62,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         faceAOriginalRotation = frontRectTrans.localEulerAngles;
         faceBOriginalRotation = backRectTrans.localEulerAngles;
         originalScale = frontRectTrans.localScale;
+        originalSizeDelta = frontRectTrans.sizeDelta;
     }
 
     void OnEnable()
@@ -197,6 +200,10 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         BackFace.transform.localEulerAngles = faceBOriginalRotation;
         FrontFace.transform.localScale = new Vector3(1, 1, 1);
         BackFace.transform.localScale = new Vector3(1, 1, 1);
+        FrontFace.preserveAspect = false;
+        BackFace.preserveAspect = false;
+        frontRectTrans.sizeDelta = originalSizeDelta;
+        backRectTrans.sizeDelta = originalSizeDelta;
         ResetPosition();
 
         isBack = false;
@@ -221,6 +228,13 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
             frontRectTrans.DOLocalRotate(Vector3.up * 0, 0.3f);
             backRectTrans.DOLocalRotate(Vector3.up * 180, 0.3f);
         }
+
+        float aspectRatio = FrontFace.sprite.textureRect.width / FrontFace.sprite.textureRect.height;
+        float newWidth = (originalSizeDelta.x - (originalSizeDelta.x * aspectRatio)) + originalSizeDelta.x;
+        FrontFace.preserveAspect = true;
+        BackFace.preserveAspect = true;
+        FrontFace.rectTransform.sizeDelta = new Vector2(newWidth + centerSizeDeltaOffset, FrontFace.sprite.textureRect.height);
+        BackFace.rectTransform.sizeDelta = new Vector2(newWidth + centerSizeDeltaOffset, FrontFace.sprite.textureRect.height);
     }
 
     public void OnBeginDrag(PointerEventData data)
