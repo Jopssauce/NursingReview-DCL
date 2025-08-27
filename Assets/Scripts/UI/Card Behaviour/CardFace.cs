@@ -36,7 +36,6 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     Vector3 initialScale;
 
     //properties
-    public float referenceAngle = 12;
     public float MaxTimeToClick = 0.60f;
     public float MinTimeToClick = 0.05f;
     public bool IsDebug = false;
@@ -166,9 +165,10 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         faceA.SetActive(true);
 
         float duration = 1.3f;
-        referenceAngle = 360f - faceA.GetComponent<RectTransform>().localEulerAngles.y;
-        switchTween = faceA.transform.DORotate(new Vector3(0, 180 - referenceAngle, 0), duration).OnComplete(Callback);
-        faceB.transform.DORotate(new Vector3(0,  -referenceAngle, 0), duration);
+        float refAngleA = faceA.GetComponent<RectTransform>().localEulerAngles.y;
+        float refAngleB = faceB.GetComponent<RectTransform>().localEulerAngles.y;
+        switchTween = faceA.transform.DORotate(new Vector3(0, refAngleA - 180, 0), duration).OnComplete(Callback);
+        faceB.transform.DORotate(new Vector3(0, refAngleB - 180, 0), duration);
 
         //scrollRect.content = faceA.GetComponent<RectTransform>();
 
