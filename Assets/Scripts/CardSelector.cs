@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +29,14 @@ public class CardSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow) && !CardFaces[0].isTweening)
         {
+            // Ensure sprite is backface to ensure smooth animation after resetting. This is for when next is played when a card is on it's bac
+            if (CardFaces[0].isBack)
+            {
+                Cards[0].sprite = SubTopics.Cards[currentIndex].BackFace;
+            }
+
             CardFaces[0].ResetCard();
             ToggleInteractables(false);
             ToggleAnimCards(true);       

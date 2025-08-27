@@ -15,7 +15,8 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     GameObject currentFace;
     GameObject lastFace;
 
-    public bool isBack {  get; private set; }
+    public bool isBack { get; private set; }
+    public bool isTweening { get; private set; }
     bool isDrag;
     bool isZoomed;
 
@@ -31,8 +32,7 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     //private variables to keep track
     private float lastClickTime;
     public float doubleClickThreshold = 0.3f; // Time in seconds
-    Tween switchTween;
-
+    public Tween switchTween;
 
     void OnEnable()
     {
@@ -100,14 +100,16 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     //Switches faceA with faceB
     private void SwitchFace(GameObject faceA, GameObject faceB)
     {
+        isTweening = true;
         currentFace = faceA.gameObject;
         lastFace = faceB.gameObject;
         faceA.gameObject.SetActive(true);
 
         float duration = 1.3f;
-        switchTween = faceA.transform.DORotate(new Vector3(0, 180 - referenceAngle, 0), duration);
+        switchTween = faceA.transform.DORotate(new Vector3(0, 180 - referenceAngle, 0), duration).OnComplete(Callback);
         faceB.transform.DORotate(new Vector3(0,  -referenceAngle, 0), duration);
         faceA.transform.localScale = faceB.transform.localScale;
+
         //scrollRect.content = faceA.GetComponent<RectTransform>();
 
         //if (tween.position % 2 == 0)
@@ -118,8 +120,14 @@ public class CardFace : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void ZoomFace(float zoom, float dur = 0.3f)
     {
-        FrontFace.transform.DOScale(zoom, dur);
+        isTweening = true;
+        FrontFace.transform.DOScale(zoom, dur).OnComplete(Callback);
         BackFace.transform.DOScale(zoom, dur);
+    }
+
+    public void Callback()
+    {
+        isTweening = false;
     }
 
     public void ResetCard()
