@@ -12,6 +12,7 @@ public class CardSelector : MonoBehaviour
     public CardFace[] CardFaces;
     public Animator animator;
     public DataSubTopic SubTopics;
+    public Image DarkBG;
     int currentIndex = 0;
 
     // Start is called before the first frame update
@@ -24,20 +25,23 @@ public class CardSelector : MonoBehaviour
 
         ToggleInteractables(true);
         ToggleAnimCards(false);
+
+        CardFaces[0].OnBeginCenter += () => { DarkBG.gameObject.SetActive(true); };
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow) && !CardFaces[0].isTweening)
+        if(Input.GetKeyDown(KeyCode.X) && !CardFaces[0].isTweening)
         {
+            CardFaces[0].ResetCard();
+            DarkBG.gameObject.SetActive(false);
+            if (CardFaces[0].isTweening) return;
             // Ensure sprite is backface to ensure smooth animation after resetting. This is for when next is played when a card is on it's bac
             if (CardFaces[0].isBack)
             {
                 Cards[0].sprite = SubTopics.Cards[currentIndex].BackFace;
             }
-
-            CardFaces[0].ResetCard();
             ToggleInteractables(false);
             ToggleAnimCards(true);       
             animator.Play("Next");
@@ -47,7 +51,9 @@ public class CardSelector : MonoBehaviour
                 Cards[2].sprite = SubTopics.Cards[currentIndex + 2].FrontFace;
             else
                 Cards[2].color = Color.clear;
+        
         }
+
     }
 
     public void OnNextFinished()
