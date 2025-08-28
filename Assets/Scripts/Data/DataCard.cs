@@ -8,4 +8,6 @@ public class DataCard : ScriptableObject
     public Sprite UISprite;
     public Sprite FrontFace;
     public Sprite BackFace;
+    public bool IsFrontHorizontal;
+    public bool IsBackHorizontal;
 }

@@ -18,6 +18,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     private RectTransform backRectTrans;
     private Canvas canvas;
     public Vector3 OrigLocalPos { get; private set; }
+    public Vector3 OrigAnchorPos { get; private set; }
     private Vector3 faceAOriginalRotation;
     private Vector3 faceBOriginalRotation;
     private Vector3 originalScale;
@@ -32,8 +33,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     public bool isTweening { get; private set; }
     private bool isDrag;
     private bool isZoomed;
-
-    Vector3 initialScale;
+    private bool isHorizontal;
 
     //properties
     public float MaxTimeToClick = 0.60f;
@@ -41,15 +41,16 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     public bool IsDebug = false;
     public bool isDoubleClicked;
     public bool isInteractable = false;
+    // Float Offset for the size when we send card to the center
     public float centerSizeDeltaOffset = 10f;
+    // Anchored Position for horizontal Card
+    public Vector2 horizontalCardPosition;
 
     //Events
     public Action OnBeginCenter;
 
     //private variables to keep track
-    private float lastClickTime;
     public float doubleClickThreshold = 0.3f; // Time in seconds
-    public Tween switchTween;
 
     void Awake()
     {
@@ -58,6 +59,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
 
         canvas = GetComponentInParent<Canvas>();
         OrigLocalPos = frontRectTrans.localPosition;
+        OrigAnchorPos = frontRectTrans.anchoredPosition;
         faceAOriginalRotation = frontRectTrans.localEulerAngles;
         faceBOriginalRotation = backRectTrans.localEulerAngles;
         originalScale = frontRectTrans.localScale;
@@ -78,8 +80,6 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         }    
         FrontFace.transform.localScale = Vector3.one;
         currentFace = FrontFace.gameObject;
-        initialScale = currentFace.transform.localScale;
-        //FrontFace.transform.position += new Vector3(0, 200, 0);
     }
 
     public void Update()
@@ -99,52 +99,25 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && !isTweening)
         {
             SwitchFaces();
         }
-
 
         if (Input.GetKeyDown(KeyCode.C) && !isTweening)
         {
             MoveToCenter();
         }
+
+        if(Input.GetKey(KeyCode.H) && !isTweening)
+        {
+            MoveToHorizontalCardPosition();
+        }    
     }
-
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    float timeSinceLastClick = Time.time - lastClickTime;
-
-    //    if (isDrag == false)
-    //    {         
-    //        if (eventData.button == PointerEventData.InputButton.Left)
-    //        {
-    //            if (timeSinceLastClick <= doubleClickThreshold)
-    //            {
-    //                if (isZoomed)
-    //                {
-    //                    isZoomed = false;
-    //                    ZoomFace(1f);
-    //                }
-    //                else
-    //                {
-    //                    isZoomed = true;
-    //                    ZoomFace(2f);
-    //                }
-    //            }
-    //        }
-    //        else if (eventData.button == PointerEventData.InputButton.Right)
-    //        {
-    //            SwitchFaces();
-    //        }
-    //    }
-    
-    //    lastClickTime = Time.time;
-    //}
 
     private void SwitchFaces()
     {
-        if (switchTween != null && switchTween.IsActive() || BackFace.sprite == null) return;
+        if (BackFace.sprite == null) return;
 
         if (isBack)
         {
@@ -165,10 +138,11 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         faceA.SetActive(true);
 
         float duration = 1.3f;
-        float refAngleA = faceA.GetComponent<RectTransform>().localEulerAngles.y;
-        float refAngleB = faceB.GetComponent<RectTransform>().localEulerAngles.y;
-        switchTween = faceA.transform.DORotate(new Vector3(0, refAngleA - 180, 0), duration).OnComplete(Callback);
-        faceB.transform.DORotate(new Vector3(0, refAngleB - 180, 0), duration);
+        RectTransform faceARect = faceA.GetComponent<RectTransform>();
+        RectTransform faceBRect = faceB.GetComponent<RectTransform>();
+
+        faceA.transform.DORotate(new Vector3(0, faceARect.localEulerAngles.y - 180, faceARect.localEulerAngles.z), duration).OnComplete(Callback);
+        faceB.transform.DORotate(new Vector3(0, faceBRect.localEulerAngles.y - 180, faceBRect.localEulerAngles.z), duration);
 
         //scrollRect.content = faceA.GetComponent<RectTransform>();
 
@@ -196,45 +170,92 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
             faceAOriginalRotation == frontRectTrans.localEulerAngles &&
             originalScale == frontRectTrans.localScale) return;
 
+        // Rotation
         FrontFace.transform.localEulerAngles = faceAOriginalRotation;
         BackFace.transform.localEulerAngles = faceBOriginalRotation;
+        //Scale
         FrontFace.transform.localScale = new Vector3(1, 1, 1);
         BackFace.transform.localScale = new Vector3(1, 1, 1);
+        // Aspect Ratio
         FrontFace.preserveAspect = false;
         BackFace.preserveAspect = false;
+        // Position
         frontRectTrans.sizeDelta = originalSizeDelta;
         backRectTrans.sizeDelta = originalSizeDelta;
         ResetPosition();
 
         isBack = false;
         isZoomed = false;
+        isHorizontal = false;
     }
 
     public void MoveToCenter()
     {
         OnBeginCenter.Invoke();
         isTweening = true;
+
         frontRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f).OnComplete(Callback);
         backRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f);
 
+        Vector3 frontEuler = frontRectTrans.localEulerAngles;
+        Vector3 backEuler = backRectTrans.localEulerAngles;
+
         // Flatten Card when centered
-        if(isBack)
-        {
-            frontRectTrans.DOLocalRotate(Vector3.up * 180, 0.3f);
-            backRectTrans.DOLocalRotate(Vector3.up * 0, 0.3f);
+        if (isBack)
+        {           
+            frontRectTrans.DOLocalRotate(new Vector3(frontEuler.x, 180, frontEuler.z), 0.3f);
+            backRectTrans.DOLocalRotate(new Vector3(backEuler.x, 0, backEuler.z), 0.3f);
         }
         else
         {
-            frontRectTrans.DOLocalRotate(Vector3.up * 0, 0.3f);
-            backRectTrans.DOLocalRotate(Vector3.up * 180, 0.3f);
+            frontRectTrans.DOLocalRotate(new Vector3(frontEuler.x, 0, frontEuler.z), 0.3f);
+            backRectTrans.DOLocalRotate(new Vector3(backEuler.x, 180, backEuler.z), 0.3f);
         }
 
         float aspectRatio = FrontFace.sprite.textureRect.width / FrontFace.sprite.textureRect.height;
         float newWidth = (originalSizeDelta.x - (originalSizeDelta.x * aspectRatio)) + originalSizeDelta.x;
-        FrontFace.preserveAspect = true;
-        BackFace.preserveAspect = true;
+        // Horizontal Cards look better without preserve aspect on
+        if (!isHorizontal)
+        {
+            FrontFace.preserveAspect = true;
+            BackFace.preserveAspect = true;
+        }
         FrontFace.rectTransform.sizeDelta = new Vector2(newWidth + centerSizeDeltaOffset, FrontFace.sprite.textureRect.height);
         BackFace.rectTransform.sizeDelta = new Vector2(newWidth + centerSizeDeltaOffset, FrontFace.sprite.textureRect.height);
+    }
+
+    public void MoveToHorizontalCardPosition()
+    {
+        if (!isHorizontal)
+        {
+            MoveToHorizontal();
+        }
+        else
+        {
+            MoveToVertical();
+        }
+    }
+
+    private void MoveToHorizontal()
+    {
+        isTweening = true;
+        isHorizontal = true;
+        frontRectTrans.DOLocalRotate(new Vector3(0, frontRectTrans.eulerAngles.y, 90), 0.3f).OnComplete(Callback);
+        backRectTrans.DOLocalRotate(new Vector3(0, backRectTrans.eulerAngles.y, 90), 0.3f);
+        
+        frontRectTrans.DOAnchorPos(horizontalCardPosition, 0.3f);
+        backRectTrans.DOAnchorPos(horizontalCardPosition, 0.3f);
+    }
+
+    private void MoveToVertical()
+    {
+        isTweening = true;
+        isHorizontal = false;
+        frontRectTrans.DOLocalRotate(new Vector3(0, frontRectTrans.eulerAngles.y, 0), 0.3f).OnComplete(Callback);
+        backRectTrans.DOLocalRotate(new Vector3(0, backRectTrans.eulerAngles.y, 0), 0.3f);
+
+        frontRectTrans.DOAnchorPos(OrigAnchorPos, 0.3f);
+        backRectTrans.DOAnchorPos(OrigAnchorPos, 0.3f);
     }
 
     public void OnBeginDrag(PointerEventData data)

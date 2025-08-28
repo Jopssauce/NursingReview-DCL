@@ -718,12 +718,12 @@ MonoBehaviour:
   FrontFace: {fileID: 783417332}
   BackFace: {fileID: 1260288712}
   scrollRect: {fileID: 0}
-  referenceAngle: 12
   MaxTimeToClick: 0.6
   MinTimeToClick: 0.05
   IsDebug: 0
   isDoubleClicked: 0
   isInteractable: 0
+  centerSizeDeltaOffset: 10
   doubleClickThreshold: 0.3
 --- !u!1 &403095079
 GameObject:
@@ -1002,7 +1002,7 @@ GameObject:
   - component: {fileID: 711388580}
   - component: {fileID: 711388581}
   m_Layer: 0
-  m_Name: Main Camera (1)
+  m_Name: 'Main Camera '
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,7 +1086,7 @@ GameObject:
   - component: {fileID: 742040043}
   - component: {fileID: 742040042}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: 'Canvas '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1588,12 +1588,12 @@ MonoBehaviour:
   FrontFace: {fileID: 9685341}
   BackFace: {fileID: 160269689}
   scrollRect: {fileID: 0}
-  referenceAngle: 12
   MaxTimeToClick: 0.6
   MinTimeToClick: 0.05
   IsDebug: 0
   isDoubleClicked: 0
   isInteractable: 0
+  centerSizeDeltaOffset: 10
   doubleClickThreshold: 0.3
 --- !u!1 &1509295922
 GameObject:
@@ -1649,12 +1649,12 @@ MonoBehaviour:
   FrontFace: {fileID: 2116311202}
   BackFace: {fileID: 516641247}
   scrollRect: {fileID: 0}
-  referenceAngle: 12
   MaxTimeToClick: 0.6
   MinTimeToClick: 0.05
   IsDebug: 0
   isDoubleClicked: 0
   isInteractable: 1
+  centerSizeDeltaOffset: 10
   doubleClickThreshold: 0.3
 --- !u!1 &1667113165
 GameObject:
@@ -1920,7 +1920,7 @@ GameObject:
   - component: {fileID: 1850878333}
   - component: {fileID: 1850878332}
   m_Layer: 0
-  m_Name: EventSystem (1)
+  m_Name: 'EventSystem '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
