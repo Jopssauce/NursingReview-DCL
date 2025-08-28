@@ -192,7 +192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9b87d6f9a2132944f97a6963006b66b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50276786e32e0e440981c6ad38dd56b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9b87d6f9a2132944f97a6963006b66b8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 50276786e32e0e440981c6ad38dd56b6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -551,7 +551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 31be21a79ab0ab84ab8e375a41ea2229, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b00256c77e464f489c0a7292c4b1040, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -631,7 +631,7 @@ MonoBehaviour:
   - {fileID: 392091323}
   - {fileID: 1389684652}
   animator: {fileID: 336998579}
-  SubTopics: {fileID: 11400000, guid: cdf0a6857cd5ac148a7f377e6ccafa3a, type: 2}
+  SubTopics: {fileID: 11400000, guid: 0df1031ef8595854191e39bbead44b7a, type: 2}
   DarkBG: {fileID: 1785134889}
 --- !u!95 &336998579
 Animator:
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e5c6408ab54041ac9813b39767c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardData: {fileID: 11400000, guid: ccabe3bb1e7031c4d9851ae3c99294a9, type: 2}
+  CardData: {fileID: 11400000, guid: 1a6ab899e8fe6834c89b2c91d48fd96d, type: 2}
   FrontFace: {fileID: 783417332}
   BackFace: {fileID: 1260288712}
   scrollRect: {fileID: 0}
@@ -797,7 +797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 74b36d68cc802014bb4fd658c934336d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d875c29aa37efd94494ddc2c7fc2da7a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -886,7 +886,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 552c5b646986de941aaa6f618e84a210, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6bdcb747c9c5124e95549c18684500d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1250,7 +1250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 74b36d68cc802014bb4fd658c934336d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d875c29aa37efd94494ddc2c7fc2da7a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e5c6408ab54041ac9813b39767c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardData: {fileID: 11400000, guid: a7ef940dcb1b09d4bb54f77a5d9575c6, type: 2}
+  CardData: {fileID: 11400000, guid: 940707c5973268d4eb13bd7716853019, type: 2}
   FrontFace: {fileID: 9685341}
   BackFace: {fileID: 160269689}
   scrollRect: {fileID: 0}
@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7e5c6408ab54041ac9813b39767c4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardData: {fileID: 11400000, guid: fc0a417d1345a87489e752d8695b79ec, type: 2}
+  CardData: {fileID: 11400000, guid: 5ce0f74e8416945448662fa12a02c064, type: 2}
   FrontFace: {fileID: 2116311202}
   BackFace: {fileID: 516641247}
   scrollRect: {fileID: 0}
@@ -2087,7 +2087,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b8c9e075f5644c6468650aae16fd3d2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b00256c77e464f489c0a7292c4b1040, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

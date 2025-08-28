@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a2666dfcdcd1c41a180ebeea810af8, type: 3}
+  m_Name: Cardiac
+  m_EditorClassIdentifier: 
+  UISprite: {fileID: 21300000, guid: 76d6dd7b633f150449b7d2858c939487, type: 3}
+  Mask: {fileID: 0}
+  Name: HTN
+  Cards:
+  - {fileID: 11400000, guid: 5ce0f74e8416945448662fa12a02c064, type: 2}
+  - {fileID: 11400000, guid: 1a6ab899e8fe6834c89b2c91d48fd96d, type: 2}
+  - {fileID: 11400000, guid: 940707c5973268d4eb13bd7716853019, type: 2}
+  - {fileID: 11400000, guid: 7530deb25aa3eee4cb013b182187a82d, type: 2}
+  - {fileID: 11400000, guid: 53b2445ec4af1bd4f999d8314fcee9ea, type: 2}
+  - {fileID: 11400000, guid: 67dd6a7e110650441af9affe9f5841c2, type: 2}
+  - {fileID: 11400000, guid: 3525699a6d11c124ab47feba2bfa8983, type: 2}
+  - {fileID: 11400000, guid: 24e450650fdaa4248858bf657a97b620, type: 2}
+  - {fileID: 11400000, guid: 5b413bd356e70314c8ff338b2ccfbd17, type: 2}
+  - {fileID: 11400000, guid: 8043522679594884dbea8a5fcd154d77, type: 2}
+  - {fileID: 11400000, guid: cdffd26075bdfc1448af4d9739a2fe54, type: 2}
+  - {fileID: 11400000, guid: ae8aca3949756a6458c85d35c85b72ef, type: 2}
+  - {fileID: 11400000, guid: 332d188f84053c5409f45cd434492385, type: 2}
+  - {fileID: 11400000, guid: cb0b5210ca4b09d448807177353c5584, type: 2}
+  - {fileID: 11400000, guid: fd3ffba8403efb04a9c3dd50981d8722, type: 2}
+  - {fileID: 11400000, guid: 228dea7098eefd74580a1eb66fa9fc94, type: 2}
+  - {fileID: 11400000, guid: 98533ac5ac55530458673d4ef7ed8c90, type: 2}
+  - {fileID: 11400000, guid: b06985db4157cd54b97f0c7e7fb587b6, type: 2}
+  - {fileID: 11400000, guid: e137d6346f9f4274baae90db514977d5, type: 2}
+  - {fileID: 11400000, guid: 5dfa548fb7e709b48bbc747c70a18d2b, type: 2}
+  - {fileID: 11400000, guid: fc0a417d1345a87489e752d8695b79ec, type: 2}
