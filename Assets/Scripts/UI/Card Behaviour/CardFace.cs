@@ -45,6 +45,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     public float centerSizeDeltaOffset = 10f;
     // Anchored Position for horizontal Card
     public Vector2 horizontalCardPosition;
+    public float horizontalCardHeightOffset = 100f;
 
     //Events
     public Action OnBeginCenter;
@@ -245,6 +246,9 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         
         frontRectTrans.DOAnchorPos(horizontalCardPosition, 0.3f);
         backRectTrans.DOAnchorPos(horizontalCardPosition, 0.3f);
+
+        FrontFace.rectTransform.DOSizeDelta(new Vector2(frontRectTrans.sizeDelta.x, originalSizeDelta.y - horizontalCardHeightOffset), 0.3f);
+        BackFace.rectTransform.DOSizeDelta(new Vector2(backRectTrans.sizeDelta.x, originalSizeDelta.y - horizontalCardHeightOffset), 0.3f);
     }
 
     private void MoveToVertical()
@@ -256,6 +260,9 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
 
         frontRectTrans.DOAnchorPos(OrigAnchorPos, 0.3f);
         backRectTrans.DOAnchorPos(OrigAnchorPos, 0.3f);
+
+        FrontFace.rectTransform.DOSizeDelta(new Vector2(frontRectTrans.sizeDelta.x, originalSizeDelta.y),0.3f);
+        BackFace.rectTransform.DOSizeDelta(new Vector2(backRectTrans.sizeDelta.x, originalSizeDelta.y), 0.3f);
     }
 
     public void OnBeginDrag(PointerEventData data)
