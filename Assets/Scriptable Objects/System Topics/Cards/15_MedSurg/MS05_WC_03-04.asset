@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d2064ff36f2a846b7eacd709f9f092, type: 3}
+  m_Name: MS05_WC_03-04
+  m_EditorClassIdentifier: 
+  Name: 
+  UISprite: {fileID: 0}
+  FrontFace: {fileID: 21300000, guid: 34f820386f0fbf34191515db4f0b439e, type: 3}
+  BackFace: {fileID: 21300000, guid: 04f22a8c016254c4ba234d7de13bd970, type: 3}
+  IsFrontHorizontal: 0
+  IsBackHorizontal: 0
