@@ -15,6 +15,7 @@ MonoBehaviour:
   Background: {fileID: 21300000, guid: 9e54318048a0a0b4a9496b6a42babfa2, type: 3}
   Mask: {fileID: 0}
   Name: 
+  Scene: Cardiac
   Cards:
   - {fileID: 11400000, guid: b7fb59da5b1cf4e4888cd13edf7cc14d, type: 2}
   - {fileID: 11400000, guid: f1d019175cb78594ab500c9b0c2a66ab, type: 2}

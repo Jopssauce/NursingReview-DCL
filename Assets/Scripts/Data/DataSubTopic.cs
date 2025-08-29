@@ -8,5 +8,6 @@ public class DataSubTopic : ScriptableObject
     public Sprite Background;
     public Sprite Mask;
     public string Name;
+    public string Scene;
     public List<DataCard> Cards;
 }

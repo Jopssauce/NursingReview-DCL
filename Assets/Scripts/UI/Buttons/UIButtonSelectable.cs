@@ -9,7 +9,7 @@ using DG.Tweening;
 [RequireComponent(typeof(Button))]
 public class UIButtonSelectable : UIButton, IPointerEnterHandler, IPointerExitHandler
 {
-    public DataTopic TopicData;
+    public DataSubTopic TopicData;
     public TextMeshProUGUI TextMeshProUGUI;
 
     public Color Default;

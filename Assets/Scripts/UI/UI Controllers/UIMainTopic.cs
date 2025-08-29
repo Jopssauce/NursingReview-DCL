@@ -50,7 +50,7 @@ public class UIMainTopic : UIController
     public event OnActiveVideoPlayer onActiveVideoPlayer;
 
     [Header("Lists")]
-    public List<DataTopic> Topics;
+    public List<DataSubTopic> Topics;
     public List<RectTransform> TopicButtons;
     public List<GameObject> GridCards = new List<GameObject>();
     public List<GameObject> ScrollCards = new List<GameObject>();
@@ -81,7 +81,7 @@ public class UIMainTopic : UIController
 
     void InitializeTabButtons()
     {
-        SelectButton(UIContentGroup.VideoButton.GetComponent<UIButtonSelectable>(), ref currentTab);
+        //SelectButton(UIContentGroup.VideoButton.GetComponent<UIButtonSelectable>(), ref currentTab);
         UIContentGroup.CardButton.GetComponent<Button>().onClick.AddListener(delegate ()
         {
             SelectButton(UIContentGroup.CardButton.GetComponent<UIButtonSelectable>(), ref currentTab);
@@ -95,14 +95,17 @@ public class UIMainTopic : UIController
 
     public void SelectButton(UIButtonSelectable selectedButton, ref UIButtonSelectable currentSelectedButton)
     {
-        if (selectedButton != currentSelectedButton)
+        PersistentSceneManager.instance.topic = selectedButton.TopicData;
+        PersistentSceneManager.instance.ReplaceActiveScene(selectedButton.TopicData.Scene);
+
+        /*if (selectedButton != currentSelectedButton)
         {
             //Deselect Old Button
             if (currentSelectedButton != null) currentSelectedButton.DeselectAction();
             //Select this button as new
             selectedButton.SelectAction();
             currentSelectedButton = selectedButton;
-        }
+        }*/
     }
 
     //TODO Refactor this into individual back buttons instead of just having one button
@@ -172,13 +175,13 @@ public class UIMainTopic : UIController
             TopicButtons.Add(instance.GetComponent<RectTransform>());
             button = instance.GetComponent<UIButtonSelectable>();
             button.TopicData = Topics[i];
-            button.TextMeshProUGUI.text = Topics[i].TopicName;
+            button.TextMeshProUGUI.text = Topics[i].name;
 
             //TODO REFACTOR THIS DIRTY DELEGATE
             button.button.onClick.AddListener(delegate ()
             {
                 SelectButton(button, ref currentTopicButton);
-                SetSelectedTopicText(button.TopicData);
+                //SetSelectedTopicText(button.TopicData);
             });
 
             instance.GetComponent<CanvasGroup>().alpha = 0;

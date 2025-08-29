@@ -16,6 +16,14 @@ public class CardSelector : MonoBehaviour
     public Image BG;
     int currentIndex = 0;
 
+    private void Awake()
+    {
+        if(PersistentSceneManager.instance != null)
+        {
+            SubTopics = PersistentSceneManager.instance.topic;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -15,6 +15,9 @@ public class PersistentSceneManager : MonoBehaviour
     AsyncOperation unloadOperation;
     AsyncOperation loadOperation;
 
+    // Im too lazy to put this anywhere else
+    public DataSubTopic topic;
+
     private void Awake()
     {
         instance = this;
@@ -26,6 +29,14 @@ public class PersistentSceneManager : MonoBehaviour
         if (LoadStartScene == true)
         {
             LoadActiveAdditive(StartScene);
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ReplaceActiveScene("New Systems UI");
         }
     }
 

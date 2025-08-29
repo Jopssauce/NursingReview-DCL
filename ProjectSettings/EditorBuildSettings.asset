@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Persistent Scene.unity
     guid: e06268d5c4c615847bc02fb5bbf2f1ff
   - enabled: 0
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Card Viewing/ER.unity
     guid: a27c67065683e5a4c88ace5dfe05ae63
+  - enabled: 1
+    path: Assets/Scenes/Card Viewing/New Systems UI.unity
+    guid: 9e8f968cf528caf4ebed6b3ad9c9cfb8
   m_configObjects: {}
