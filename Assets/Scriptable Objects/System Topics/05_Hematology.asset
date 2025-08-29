@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a2666dfcdcd1c41a180ebeea810af8, type: 3}
+  m_Name: 05_Hematology
+  m_EditorClassIdentifier: 
+  UISprite: {fileID: 0}
+  Mask: {fileID: 0}
+  Name: 
+  Cards:
+  - {fileID: 11400000, guid: 0cb420e663d38a74789cc23698f030d3, type: 2}
+  - {fileID: 11400000, guid: 2d49e00dde9da0643b8007032c62b771, type: 2}
+  - {fileID: 11400000, guid: 3183fde18317cbc429b24caa146eccaa, type: 2}
+  - {fileID: 11400000, guid: 84790f3ec17502544b81913f84633fb1, type: 2}
+  - {fileID: 11400000, guid: f7bb6f1bb22460d40a06326e01fae38a, type: 2}
+  - {fileID: 11400000, guid: 4bdacbb1db73af44c966532b5e45aa72, type: 2}
+  - {fileID: 11400000, guid: 25411d0b253c06c4fb760b67e3a6fafb, type: 2}
+  - {fileID: 11400000, guid: 0903925a74f493b45b387e27165cb191, type: 2}
+  - {fileID: 11400000, guid: 0d2c63c363cb5bc4086d7b2bfc3edb0b, type: 2}
+  - {fileID: 11400000, guid: 10ac277e698f8b8439caa6796c405d0b, type: 2}
+  - {fileID: 11400000, guid: 1dbfaa2284e97e047a00c60a211ce736, type: 2}
+  - {fileID: 11400000, guid: 6d770a1b2afc65d4fa90ac80bb9720e0, type: 2}
+  - {fileID: 11400000, guid: 9730591ceab2ef247a496f2d1360a1af, type: 2}

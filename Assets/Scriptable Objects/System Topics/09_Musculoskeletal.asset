@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a2666dfcdcd1c41a180ebeea810af8, type: 3}
+  m_Name: 09_Musculoskeletal
+  m_EditorClassIdentifier: 
+  UISprite: {fileID: 0}
+  Mask: {fileID: 0}
+  Name: 
+  Cards:
+  - {fileID: 11400000, guid: 4591b84d624f2ae4b9d1217d2f6d7e35, type: 2}
+  - {fileID: 11400000, guid: 4c44e5ce37841874ea9e48ac504386d4, type: 2}
+  - {fileID: 11400000, guid: 171b7a4e8ba1d224f950ac97a2cdb639, type: 2}
+  - {fileID: 11400000, guid: 14fb9576a0865cf4986297968e04f91c, type: 2}
+  - {fileID: 11400000, guid: b78342a9c5a4eba46bc87f251b5891a6, type: 2}
+  - {fileID: 11400000, guid: 9c1ddbc390ca21d4c874fff6511872c2, type: 2}
+  - {fileID: 11400000, guid: 33b9f4e647ed6354dab570c1c0167f7b, type: 2}
+  - {fileID: 11400000, guid: 4eb7e896c0c41934299112622d2fb01b, type: 2}
+  - {fileID: 11400000, guid: b998f4175e0d016438ccb199df99c47a, type: 2}
+  - {fileID: 11400000, guid: 8d58007b469572041b24ac1f1f3a4fa1, type: 2}
+  - {fileID: 11400000, guid: 201ed76bfd6f5de4ca3f4edb5c422758, type: 2}

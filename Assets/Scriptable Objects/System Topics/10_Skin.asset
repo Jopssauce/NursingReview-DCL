@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a2666dfcdcd1c41a180ebeea810af8, type: 3}
+  m_Name: 10_Skin
+  m_EditorClassIdentifier: 
+  UISprite: {fileID: 0}
+  Mask: {fileID: 0}
+  Name: 
+  Cards:
+  - {fileID: 11400000, guid: bb8b3a9d72ed0ea4991b0b1fb641485e, type: 2}
+  - {fileID: 11400000, guid: f553cae3b8afb434290761425fe0b294, type: 2}
+  - {fileID: 11400000, guid: a4fc7539bce0e064b812f05e34e63d68, type: 2}
+  - {fileID: 11400000, guid: 31576076c3e7ce64b87eadc857aee230, type: 2}
+  - {fileID: 11400000, guid: eb7b180d961f84f478e62d95aebca257, type: 2}
+  - {fileID: 11400000, guid: 59832259af107954ba4263acb7beec95, type: 2}
+  - {fileID: 11400000, guid: fd41cafe8566a5a4c84bd06e4d671efd, type: 2}
+  - {fileID: 11400000, guid: bcd230c0b6aa9744598b595517938414, type: 2}
+  - {fileID: 11400000, guid: 19b9153718b777f468dd26dd8d1136e1, type: 2}
+  - {fileID: 11400000, guid: 51042393adeb99747897890ee3fbad37, type: 2}
