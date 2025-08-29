@@ -34,6 +34,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     private bool isDrag;
     private bool isZoomed;
     private bool isHorizontal;
+    private bool isCenterMode;
 
     //properties
     public float MaxTimeToClick = 0.60f;
@@ -188,12 +189,14 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         isBack = false;
         isZoomed = false;
         isHorizontal = false;
+        isCenterMode = false;
     }
 
     public void MoveToCenter()
     {
         OnBeginCenter.Invoke();
         isTweening = true;
+        isCenterMode = true;
 
         frontRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f).OnComplete(Callback);
         backRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f);
@@ -227,6 +230,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
 
     public void MoveToHorizontalCardPosition()
     {
+        if (isCenterMode) return;
         if (!isHorizontal)
         {
             MoveToHorizontal();
@@ -264,6 +268,51 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         FrontFace.rectTransform.DOSizeDelta(new Vector2(frontRectTrans.sizeDelta.x, originalSizeDelta.y),0.3f);
         BackFace.rectTransform.DOSizeDelta(new Vector2(backRectTrans.sizeDelta.x, originalSizeDelta.y), 0.3f);
     }
+
+    /* This is the code in case they want to rotate horizontally during center
+    private void MoveToHorizontal()
+    {
+        isTweening = true;
+        isHorizontal = true;
+        frontRectTrans.DOLocalRotate(new Vector3(0, frontRectTrans.eulerAngles.y, 90), 0.3f).OnComplete(Callback);
+        backRectTrans.DOLocalRotate(new Vector3(0, backRectTrans.eulerAngles.y, 90), 0.3f);
+
+        if (!isCenterMode)
+        {
+            frontRectTrans.DOAnchorPos(horizontalCardPosition, 0.3f);
+            backRectTrans.DOAnchorPos(horizontalCardPosition, 0.3f);
+            FrontFace.rectTransform.DOSizeDelta(new Vector2(frontRectTrans.sizeDelta.x, originalSizeDelta.y - horizontalCardHeightOffset), 0.3f);
+            BackFace.rectTransform.DOSizeDelta(new Vector2(backRectTrans.sizeDelta.x, originalSizeDelta.y - horizontalCardHeightOffset), 0.3f);
+        }
+        else
+        {
+            FrontFace.preserveAspect = false;
+            BackFace.preserveAspect = false;
+        }
+
+
+    }
+
+    private void MoveToVertical()
+    {
+        isTweening = true;
+        isHorizontal = false;
+        frontRectTrans.DOLocalRotate(new Vector3(0, frontRectTrans.eulerAngles.y, 0), 0.3f).OnComplete(Callback);
+        backRectTrans.DOLocalRotate(new Vector3(0, backRectTrans.eulerAngles.y, 0), 0.3f);
+
+        if (!isCenterMode)
+        {
+            frontRectTrans.DOAnchorPos(OrigAnchorPos, 0.3f);
+            backRectTrans.DOAnchorPos(OrigAnchorPos, 0.3f);
+            FrontFace.rectTransform.DOSizeDelta(new Vector2(frontRectTrans.sizeDelta.x, originalSizeDelta.y), 0.3f);
+            BackFace.rectTransform.DOSizeDelta(new Vector2(backRectTrans.sizeDelta.x, originalSizeDelta.y), 0.3f);
+        }
+        else
+        {
+            FrontFace.preserveAspect = true;
+            BackFace.preserveAspect = true;
+        }
+    }*/
 
     public void OnBeginDrag(PointerEventData data)
     {
