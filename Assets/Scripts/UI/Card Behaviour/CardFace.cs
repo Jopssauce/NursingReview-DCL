@@ -24,7 +24,6 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
     private Vector3 originalScale;
     private Vector2 originalSizeDelta;
     private Vector2 dragOffset;
-    private Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
     GameObject currentFace;
     GameObject lastFace;
@@ -214,6 +213,7 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         isTweening = true;
         isCenterMode = true;
 
+        Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
         frontRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f).OnComplete(Callback);
         backRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f);
 
