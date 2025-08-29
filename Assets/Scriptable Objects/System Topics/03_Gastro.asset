@@ -12,7 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a2666dfcdcd1c41a180ebeea810af8, type: 3}
   m_Name: 03_Gastro
   m_EditorClassIdentifier: 
-  UISprite: {fileID: 0}
+  Background: {fileID: 0}
   Mask: {fileID: 0}
   Name: 
-  Cards: []
+  Cards:
+  - {fileID: 11400000, guid: 3cadd0176f679eb49b12a6a892440536, type: 2}
+  - {fileID: 11400000, guid: 8f00e4db63e16b64f9f0b4149dc2c3f7, type: 2}
+  - {fileID: 11400000, guid: 8779f68f4cd41794599d48c89b002a91, type: 2}
+  - {fileID: 11400000, guid: 318e189dd2379ef43ab60b53b424f2c2, type: 2}
+  - {fileID: 11400000, guid: 046911033e3f04a42a5792e9f03a5c8a, type: 2}
+  - {fileID: 11400000, guid: c98ad65b9be83a347a8f78ceffea30ac, type: 2}
+  - {fileID: 11400000, guid: 2f23a3107db27bb48a406cf3b179c8d4, type: 2}
+  - {fileID: 11400000, guid: 64d023345e2a91d47b28ace2c8f9a969, type: 2}
+  - {fileID: 11400000, guid: 9de48f29ff3ae0a458eb3d9d343af606, type: 2}
+  - {fileID: 11400000, guid: 9b2f078272bb18c41879c12ce61f7ece, type: 2}
+  - {fileID: 11400000, guid: d44ffdde866183f469e6a78e9e28b822, type: 2}
+  - {fileID: 11400000, guid: 6a02de212993da44a9c26222aa7ff505, type: 2}
+  - {fileID: 11400000, guid: 56caef82941af2b498b39c0257e17ea0, type: 2}
+  - {fileID: 11400000, guid: 621b93e7ca961fe4ba38a006a7ad1672, type: 2}
+  - {fileID: 11400000, guid: ea5c8b6942099c041a3cd0298c78dd9b, type: 2}
+  - {fileID: 11400000, guid: cb360d642d9434f4c907fb522f6a546d, type: 2}
+  - {fileID: 11400000, guid: c09bd5cfbeff2ec4ea3e9ce957bf05ea, type: 2}
+  - {fileID: 11400000, guid: 952a0332d62f2154da5516002a39e1f3, type: 2}
+  - {fileID: 11400000, guid: c527f68527e7b174e8405409eaa0fa80, type: 2}
