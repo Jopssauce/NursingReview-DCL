@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Background: {fileID: 21300000, guid: c58e577a6937e7d4d95fe2ecfbadf591, type: 3}
   Mask: {fileID: 0}
-  Name: 
+  Name: 15 Medical Surgery
   Scene: Cardiac
   Cards:
   - {fileID: 11400000, guid: 82875d2dbd7771546800b5cf10a81d1c, type: 2}

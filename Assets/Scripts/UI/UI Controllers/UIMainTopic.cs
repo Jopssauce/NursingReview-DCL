@@ -175,7 +175,7 @@ public class UIMainTopic : UIController
             TopicButtons.Add(instance.GetComponent<RectTransform>());
             button = instance.GetComponent<UIButtonSelectable>();
             button.TopicData = Topics[i];
-            button.TextMeshProUGUI.text = Topics[i].name;
+            button.TextMeshProUGUI.text = Topics[i].Name;
 
             //TODO REFACTOR THIS DIRTY DELEGATE
             button.button.onClick.AddListener(delegate ()
