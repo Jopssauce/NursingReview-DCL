@@ -364,9 +364,14 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
             // Apply the offset to maintain the relative position from where we clicked
             Vector2 newPosition = canvasPosition + dragOffset;
 
+            Vector3 transPoint = canvas.transform.TransformPoint(newPosition);;
             // Convert back to world position and apply to the RectTransform
-            frontRectTrans.position = canvas.transform.TransformPoint(newPosition);
-            backRectTrans.position = canvas.transform.TransformPoint(newPosition);
+            frontRectTrans.position = transPoint;
+            backRectTrans.position = transPoint;
+
+            // Dirty Fix 
+            frontRectTrans.localPosition = new Vector3(frontRectTrans.localPosition.x, frontRectTrans.localPosition.y, OrigLocalPos.z);
+            backRectTrans.localPosition = new Vector3(backRectTrans.localPosition.x, backRectTrans.localPosition.y, OrigLocalPos.z);
         }
     }
 
