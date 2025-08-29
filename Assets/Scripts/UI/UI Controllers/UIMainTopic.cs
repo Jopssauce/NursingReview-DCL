@@ -200,7 +200,7 @@ public class UIMainTopic : UIController
             ButtonCard buttonCard = instance.GetComponent<ButtonCard>();
             buttonCard.SubTopicData = dataSubTopic;
             buttonCard.UISubTopicMask.TextMeshProUGUI.text = dataSubTopic.Name;
-            instance.GetComponent<Image>().sprite = dataSubTopic.UISprite;
+            instance.GetComponent<Image>().sprite = dataSubTopic.Background;
             GridCards.Add(instance);
         }
         onInstancedSubTopics();

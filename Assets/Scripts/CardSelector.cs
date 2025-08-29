@@ -13,14 +13,22 @@ public class CardSelector : MonoBehaviour
     public Animator animator;
     public DataSubTopic SubTopics;
     public Image DarkBG;
+    public Image BG;
     int currentIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(SubTopics.Background != null)
+        {
+            BG.sprite = SubTopics.Background;
+        }
+
         for (int i = 0; i < CardFaces.Length; i++) 
         {
             CardFaces[i].CardData = SubTopics.Cards[i];
+            CardFaces[i].InitCard();
+            Cards[i].sprite = SubTopics.Cards[i].FrontFace;
         }
 
         ToggleInteractables(true);

@@ -84,6 +84,22 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         currentFace = FrontFace.gameObject;
     }
 
+    public void InitCard()
+    {
+        FrontFace.sprite = CardData.FrontFace;
+        BackFace.sprite = CardData.BackFace;
+        if (CardData.BackFace == null)
+        {
+            BackFace.GetComponent<Image>().enabled = false;
+        }
+        else
+        {
+            BackFace.GetComponent<Image>().enabled = true;
+        }
+        FrontFace.transform.localScale = Vector3.one;
+        currentFace = FrontFace.gameObject;
+    }
+
     public void Update()
     {
         if (!isInteractable) return;
