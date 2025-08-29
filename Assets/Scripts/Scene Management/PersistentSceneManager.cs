@@ -36,6 +36,11 @@ public class PersistentSceneManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
+            if(SceneManager.GetActiveScene().name == "Persistent Scene Manager" || SceneManager.GetActiveScene().name == StartScene)
+            {
+                Application.Quit();
+                return;
+            }
             ReplaceActiveScene("New Systems UI");
         }
     }
