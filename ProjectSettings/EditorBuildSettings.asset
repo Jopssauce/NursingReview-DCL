@@ -5,22 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Persistent Scene.unity
     guid: e06268d5c4c615847bc02fb5bbf2f1ff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Title Screen.unity
     guid: 1ae0462f75ce6a84394508febb064314
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Topic UI.unity
     guid: ec2ad4f1cc8c71345bf6c912e2246a2a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Systems UI.unity
     guid: fc95f00d84c39304fbc95ae557c7f94b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Patient Units UI.unity
     guid: 17aa31a9dc13d3c4892df7086295e5b7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Video Player UI.unity
     guid: fad3c9bb9f8cdbf46b1effac021e1803
+  - enabled: 1
+    path: Assets/Scenes/Card Viewing/Cardiac.unity
+    guid: 2e18aad3b6625e04387e3f88125d6ffb
+  - enabled: 1
+    path: Assets/Scenes/Card Viewing/ER.unity
+    guid: a27c67065683e5a4c88ace5dfe05ae63
   m_configObjects: {}

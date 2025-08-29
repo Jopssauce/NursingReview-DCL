@@ -31,10 +31,12 @@ public class CardSelector : MonoBehaviour
             Cards[i].sprite = SubTopics.Cards[i].FrontFace;
         }
 
-        ToggleInteractables(true);
-        ToggleAnimCards(false);
+        
 
         CardFaces[0].OnBeginCenter += () => { DarkBG.gameObject.SetActive(true); };
+        ToggleInteractables(false);
+        ToggleAnimCards(true);
+        animator.Play("Intro");
     }
 
     // Update is called once per frame
@@ -85,6 +87,12 @@ public class CardSelector : MonoBehaviour
         CardFaces[0].CardData = SubTopics.Cards[currentIndex];
         CardFaces[1].CardData = SubTopics.Cards[currentIndex + 1];
 
+        ToggleInteractables(true);
+        ToggleAnimCards(false);
+    }
+
+    public void OnIntroFinished()
+    {
         ToggleInteractables(true);
         ToggleAnimCards(false);
     }
