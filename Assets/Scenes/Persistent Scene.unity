@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadStartScene: 1
-  StartScene: New Systems UI
+  StartScene: Body Systems UI
   topic: {fileID: 0}

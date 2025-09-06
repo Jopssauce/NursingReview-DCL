@@ -25,7 +25,7 @@ public class ParallaxBackground : MonoBehaviour
 
     private void Update()
     {
-        CaluclatePosition();
+        //CaluclatePosition();
     }
 
     void CaluclatePosition()

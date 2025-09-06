@@ -45,11 +45,14 @@ public class CanvasTweener : MonoBehaviour
         {
             sequence.Append(Jump(uiMainTopic.TopicButtons[i], LeftJumpPower, LeftJumpDuration, LeftFadeDuration));
         }
-        sequence.onComplete += RightSequence;
+        //sequence.onComplete += RightSequence;
         sequence.onComplete += delegate ()
         {
             
-            uiMainTopic.UITopicButtonScrollView.ScrollRect.content.GetComponent<VerticalLayoutGroup>().enabled = true;
+            uiMainTopic.scrollView1.ScrollRect.content.GetComponent<VerticalLayoutGroup>().enabled = true;
+            if(uiMainTopic.scrollView2 != null)
+                uiMainTopic.scrollView2.ScrollRect.content.GetComponent<VerticalLayoutGroup>().enabled = true;
+            uiMainTopic.RaycastBlocker.SetActive(false);
         };
     }
 
@@ -100,7 +103,7 @@ public class CanvasTweener : MonoBehaviour
 
     public void HideUI(float time = 0.3f)
     {
-        uiMainTopic.UITopicButtonScrollView.ParentCanvasGroup.DOFade(0, time);
+        uiMainTopic.scrollView1.ParentCanvasGroup.DOFade(0, time);
         uiMainTopic.UIContentGroup.ParentCanvasGroup.DOFade(0, time);
         uiMainTopic.UIContentGroup.Header.GetComponent<CanvasGroup>().DOFade(0, time);
         uiMainTopic.UINavigationGroup.ParentCanvasGroup.DOFade(0, time);
@@ -109,7 +112,7 @@ public class CanvasTweener : MonoBehaviour
 
     public void UnHideUI(float time = 0.3f)
     {
-        uiMainTopic.UITopicButtonScrollView.ParentCanvasGroup.DOFade(1, time);
+        uiMainTopic.scrollView1.ParentCanvasGroup.DOFade(1, time);
         uiMainTopic.UIContentGroup.ParentCanvasGroup.DOFade(1, time);
         uiMainTopic.UIContentGroup.Header.GetComponent<CanvasGroup>().DOFade(1, time);
         uiMainTopic.UINavigationGroup.ParentCanvasGroup.DOFade(1, time);

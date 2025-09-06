@@ -11,6 +11,7 @@ public class PersistentSceneManager : MonoBehaviour
 
     private string currentMainScene;
     private string sceneToLoad;
+    private string lastScene;
 
     AsyncOperation unloadOperation;
     AsyncOperation loadOperation;
@@ -29,6 +30,7 @@ public class PersistentSceneManager : MonoBehaviour
         if (LoadStartScene == true)
         {
             LoadActiveAdditive(StartScene);
+            lastScene = StartScene;
         }
     }
 
@@ -41,7 +43,7 @@ public class PersistentSceneManager : MonoBehaviour
                 Application.Quit();
                 return;
             }
-            ReplaceActiveScene("New Systems UI");
+            ReplaceActiveScene(lastScene);
         }
     }
 
@@ -76,6 +78,7 @@ public class PersistentSceneManager : MonoBehaviour
         if (unloadOperation != null) return;
         LoadSceneAdditive(sceneToLoad);
         this.sceneToLoad = sceneToLoad;
+        lastScene = SceneManager.GetActiveScene().name;
         unloadOperation = UnloadScene(SceneManager.GetActiveScene().name);
 
         unloadOperation.completed += SetActiveOperation;

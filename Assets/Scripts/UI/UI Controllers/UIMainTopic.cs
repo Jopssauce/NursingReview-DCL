@@ -36,7 +36,8 @@ public class UIMainTopic : UIController
     public GameObject RaycastBlocker;
 
     [Header("Groups")]
-    public UITopicButtonScrollView UITopicButtonScrollView;
+    public UITopicButtonScrollView scrollView1;
+    public UITopicButtonScrollView scrollView2;
     public UIContentGroup UIContentGroup;
     public UIBackgroundGroup UIBackgroundGroup;
     public UINavigationGroup UINavigationGroup;
@@ -58,6 +59,8 @@ public class UIMainTopic : UIController
     Tween BackgroundFadeTween;
     bool isVideoPlaying;
 
+    public string sceneToLoad;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -73,9 +76,14 @@ public class UIMainTopic : UIController
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && RaycastBlocker.activeSelf == false)
+        //if(Input.GetKeyDown(KeyCode.Escape) && RaycastBlocker.activeSelf == false)
+        //{
+        //    BackButton();
+        //}
+
+        if (Input.GetKeyDown(KeyCode.Space) && RaycastBlocker.activeSelf == false && PersistentSceneManager.instance != null)
         {
-            BackButton();
+            PersistentSceneManager.instance.ReplaceActiveScene(sceneToLoad);
         }
     }
 
@@ -168,12 +176,13 @@ public class UIMainTopic : UIController
 
     private void InstantiateTopics()
     {
-        for (int i = 0; i < Topics.Count; i++)
+        UITopicButtonScrollView view = scrollView1;
+        for (int i = 0; i < TopicButtons.Count; i++)
         {
-            UIButtonSelectable button;
-            GameObject instance = Instantiate(MainTopicButton, UITopicButtonScrollView.ScrollRect.content.transform);
-            TopicButtons.Add(instance.GetComponent<RectTransform>());
-            button = instance.GetComponent<UIButtonSelectable>();
+            UIButtonSelectable button = TopicButtons[i].GetComponent<UIButtonSelectable>();
+            //GameObject instance = Instantiate(MainTopicButton, view.ScrollRect.content.transform);
+            //TopicButtons.Add(instance.GetComponent<RectTransform>());
+            //button = instance.GetComponent<UIButtonSelectable>();
             button.TopicData = Topics[i];
             button.TextMeshProUGUI.text = Topics[i].Name;
 
@@ -184,11 +193,17 @@ public class UIMainTopic : UIController
                 //SetSelectedTopicText(button.TopicData);
             });
 
-            instance.GetComponent<CanvasGroup>().alpha = 0;
+            button.GetComponent<CanvasGroup>().alpha = 0;
         }
-        LayoutRebuilder.ForceRebuildLayoutImmediate(UITopicButtonScrollView.ScrollRect.content);
-        UITopicButtonScrollView.ScrollRect
-            .content.GetComponent<VerticalLayoutGroup>().enabled = false;
+        LayoutRebuilder.ForceRebuildLayoutImmediate(scrollView1.ScrollRect.content);
+        scrollView1.ScrollRect.content.GetComponent<VerticalLayoutGroup>().enabled = false;
+
+        if(scrollView2 != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(scrollView2.ScrollRect.content);
+            scrollView2.ScrollRect.content.GetComponent<VerticalLayoutGroup>().enabled = false;
+        }
+        
 
         onInstancedTopics?.Invoke();
     }
