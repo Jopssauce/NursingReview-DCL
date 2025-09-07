@@ -52,6 +52,7 @@ public class CardSelector : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.X) && !CardFaces[0].isTweening)
         {
+            DOTween.instance.DOComplete();
             CardFaces[0].ResetCard();
             DarkBG.gameObject.SetActive(false);
             if (CardFaces[0].isTweening) return;
