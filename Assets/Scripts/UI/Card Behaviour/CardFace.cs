@@ -213,7 +213,8 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         isTweening = true;
         isCenterMode = true;
 
-        Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        CanvasScaler scaler = canvas.GetComponent<CanvasScaler>();
+        Vector2 screenCenter = new Vector2(scaler.referenceResolution.x / 2f, scaler.referenceResolution.y / 2f);
         frontRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f).OnComplete(Callback);
         backRectTrans.DOAnchorPos(new Vector3(screenCenter.x, 0, OrigLocalPos.z), 0.3f);
 
