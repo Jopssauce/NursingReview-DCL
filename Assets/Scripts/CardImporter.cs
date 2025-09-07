@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq.Expressions;
 using DG.Tweening.Plugins.Core.PathCore;
 using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
+#if UNITY_EDITOR
 // Place this script on a gameobject and run (make an editor button maybe idk too lazy)
 public class CardImporter : MonoBehaviour
 {
@@ -105,3 +105,4 @@ public class CardImporter : MonoBehaviour
     }
  
 }
+#endif

@@ -17,4 +17,4 @@ MonoBehaviour:
   FrontFace: {fileID: 21300000, guid: 08641160d7ac02c4c95c96960aa659e3, type: 3}
   BackFace: {fileID: 21300000, guid: f5a95511c46b0724e80c45ab022541a7, type: 3}
   IsFrontHorizontal: 0
-  IsBackHorizontal: 0
+  IsBackHorizontal: 1
