@@ -50,7 +50,7 @@ public class CardSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X) && !CardFaces[0].isTweening)
+        if(Input.GetKeyDown(KeyCode.D) && !CardFaces[0].isTweening)
         {
             DOTween.instance.DOComplete();
             CardFaces[0].ResetCard();

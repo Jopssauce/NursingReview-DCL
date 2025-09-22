@@ -40,7 +40,7 @@ public class PersistentSceneManager : MonoBehaviour
         {
             if(SceneManager.GetActiveScene().name == "Persistent Scene Manager" || SceneManager.GetActiveScene().name == "Body Systems UI" || SceneManager.GetActiveScene().name == "Patients UI")
             {
-                Application.Quit();
+                //Application.Quit();
                 return;
             }
             ReplaceActiveScene(lastScene);

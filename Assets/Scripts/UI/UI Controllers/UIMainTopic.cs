@@ -17,6 +17,8 @@ public class UIMainTopic : UIController
     public UIButtonSelectable currentTopicButton;
     public UIButtonSelectable currentTab;
     public DataTopic DefaultTopic;
+    public GameObject exit;
+    public GameObject resolutions;
     DataTopic currentTopic;
 
     [Header("Animation Settings")]
@@ -81,9 +83,20 @@ public class UIMainTopic : UIController
         //    BackButton();
         //}
 
-        if (Input.GetKeyDown(KeyCode.Space) && RaycastBlocker.activeSelf == false && PersistentSceneManager.instance != null)
+        if (Input.GetKeyDown(KeyCode.Space) && RaycastBlocker.activeSelf == false && PersistentSceneManager.instance != null && !exit.activeSelf)
         {
             PersistentSceneManager.instance.ReplaceActiveScene(sceneToLoad);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            exit.SetActive(!exit.activeSelf);
+            scrollView1.gameObject.SetActive(!scrollView1.gameObject.activeSelf);
+            if(scrollView2 != null)
+                scrollView2.gameObject.SetActive(!scrollView2.gameObject.activeSelf);
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            resolutions.SetActive(!resolutions.activeSelf);
         }
     }
 
