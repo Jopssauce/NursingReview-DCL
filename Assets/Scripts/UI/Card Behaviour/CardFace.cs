@@ -187,9 +187,8 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
             faceAOriginalRotation == frontRectTrans.localEulerAngles &&
             originalScale == frontRectTrans.localScale) return;
 
-        // Rotation
-        FrontFace.transform.localEulerAngles = faceAOriginalRotation;
-        BackFace.transform.localEulerAngles = faceBOriginalRotation;
+        ResetRotation(!isBack);
+
         //Scale
         FrontFace.transform.localScale = new Vector3(1, 1, 1);
         BackFace.transform.localScale = new Vector3(1, 1, 1);
@@ -199,12 +198,29 @@ public class CardFace : MonoBehaviour, /*IPointerClickHandler,*/ IBeginDragHandl
         // Position
         frontRectTrans.sizeDelta = originalSizeDelta;
         backRectTrans.sizeDelta = originalSizeDelta;
-        ResetPosition();
 
-        isBack = false;
+        if(frontRectTrans.localPosition != OrigLocalPos && backRectTrans.localPosition != OrigLocalPos)
+            ResetPosition();
+
         isZoomed = false;
         isHorizontal = false;
         isCenterMode = false;
+    }
+
+    public void ResetRotation(bool front)
+    {
+        // Rotation
+        if (front)
+        {
+            FrontFace.transform.localEulerAngles = faceAOriginalRotation;
+            BackFace.transform.localEulerAngles = faceBOriginalRotation;
+            isBack = false;
+        }
+        else
+        {
+            FrontFace.transform.localEulerAngles = faceBOriginalRotation;
+            BackFace.transform.localEulerAngles = faceAOriginalRotation;
+        }
     }
 
     public void MoveToCenter()

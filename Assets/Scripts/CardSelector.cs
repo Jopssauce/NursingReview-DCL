@@ -78,6 +78,10 @@ public class CardSelector : MonoBehaviour
     public void OnNextFinished()
     {
         currentIndex++;
+
+        // Make sure next card is always front
+        CardFaces[0].ResetRotation(true);
+
         // Last Card
         if (currentIndex >= SubTopics.Cards.Count - 1)
         {
